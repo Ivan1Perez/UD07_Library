@@ -6,6 +6,9 @@ public class Lista {
 
     private Node head;
 
+    public Lista() {
+    }
 
+    
 
 }

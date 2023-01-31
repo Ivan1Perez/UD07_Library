@@ -24,8 +24,8 @@ public class Publicacion {
         return color;
     }
 
-    @Override
-    public String toString() {
-        return "Tipo de publicación: ";
-    }
+//    @Override
+//    public String toString() {
+//        return "Tipo de publicación: ";
+//    }
 }
