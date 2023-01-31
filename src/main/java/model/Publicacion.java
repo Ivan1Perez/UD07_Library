@@ -24,6 +24,8 @@ public class Publicacion {
         return color;
     }
 
+    public abstract Lista addToLibrary();
+
 //    @Override
 //    public String toString() {
 //        return "Tipo de publicación: ";

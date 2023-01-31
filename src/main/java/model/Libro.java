@@ -18,15 +18,15 @@ public class Libro extends Publicacion{
         this.ejemplaresInicial = ejemplaresInicial;
     }
 
-    public boolean prestamo(String titulo){
-        if(titulo.equalsIgnoreCase(this.titulo) && ejemplaresActuales > 0){
-
-
-            return true;
-        }
-
-
-    }
+//    public boolean prestamo(String titulo){
+//        if(titulo.equalsIgnoreCase(this.titulo) && ejemplaresActuales > 0){
+//
+//
+//            return true;
+//        }
+//
+//
+//    }
 
     @Override
     public String toString() {
