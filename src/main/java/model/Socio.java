@@ -4,7 +4,7 @@ public class Socio{
 
     private String nombre;
     private String DNI;
-    private ListaLibro librosPrestados;
+    private ListaEjemplares librosPrestados;
 
     public Socio(String nombre, String DNI) {
         this.nombre = nombre;

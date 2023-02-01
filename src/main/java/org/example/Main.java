@@ -21,13 +21,12 @@ public class Main {
 
         System.out.println(p1);
 
-        System.out.println(l1.getListaLibro());
+        System.out.println(l1.getListaEjemplares());
 
-        System.out.println("Prestar libro 'El camino de los dioses'\nPréstamo realizado: " + l1.prestamo("El camino de los dioses"));
+//        System.out.println("Prestar libro 'El camino de los dioses'\nPréstamo realizado: " + l1.prestamo("El camino de los dioses"));
         System.out.println();
 
-        System.out.println(l1.getListaLibro());
-
+        System.out.println(l1);
 
     }
 }
