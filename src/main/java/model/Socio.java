@@ -1,10 +1,10 @@
 package model;
 
-public class Socio {
+public class Socio{
 
     private String nombre;
     private String DNI;
-    private ListaLibro lista;
+    private ListaLibro librosPrestados;
 
     public Socio(String nombre, String DNI) {
         this.nombre = nombre;
@@ -16,6 +16,6 @@ public class Socio {
         return "Socio\n" +
                 "Nombre: " + nombre + "\n" +
                 "DNI: " + DNI + "\n" +
-                "Libros prestados: " + lista;
+                "Libros prestados: " + librosPrestados;
     }
 }
