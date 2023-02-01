@@ -4,39 +4,57 @@ public class Libro extends Publicacion{
 
     private String autor;
     private String titulo;
-    private int ISBN;
+    private long ISBN;
     private int ejemplaresInicial;
-    private int ejemplaresActuales;
+    private int ejemplaresDisponibles;
 
-//    private Lista libro = new Lista();
+    private static final ListaLibro listaLibro = new ListaLibro();
 
-    public Libro(String editorial, int paginas, Color color, String autor, String titulo, int ISBN, int ejemplaresInicial) {
+    public Libro(String editorial, int paginas, Color color, String autor, String titulo, int ejemplaresInicial) {
         super(editorial, paginas, color);
         this.autor = autor;
         this.titulo = titulo;
-        this.ISBN = ISBN;
+        String numISBN = "";
+        for(int i = 0 ; i < 13 ; i++){
+            numISBN += String.valueOf((int) (Math.random()*(9+1)));
+        }
+        this.ISBN = Long.parseLong(numISBN);
         this.ejemplaresInicial = ejemplaresInicial;
+        ejemplaresDisponibles = ejemplaresInicial;
+        listaLibro.add(this);
     }
 
-//    public boolean prestamo(String titulo){
-//        if(titulo.equalsIgnoreCase(this.titulo) && ejemplaresActuales > 0){
-//
-//
-//            return true;
-//        }
-//
-//
+    public boolean prestamo(String titulo){
+        if(ejemplaresDisponibles > 0 && listaLibro.getTitulo(titulo)){
+            ejemplaresDisponibles--;
+            return true;
+        }
+
+        return false;
+    }
+
+//    public void actualizarEjemplares(int cantidad){
+//        listaLibro.ge
 //    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+
+    public ListaLibro getListaLibro(){
+        return listaLibro;
+    }
 
     @Override
     public String toString() {
-        return "Libro\n" +
-                "Autor: " + autor + "\n" +
-                "Título: " + titulo + "\n" +
-                "Editorial: " + super.getEditorial() + "\n" +
-                "Páginas: " + super.getPaginas() + "\n" +
-                "Color: " + super.getColor() + "\n" +
-                "ISBN: " + ISBN + "\n" +
-                "Ejemplares: " + ejemplaresInicial + "\n";
+        return "\tLibro{\n" +
+                "\t\tTítulo: " + titulo + "\n" +
+                "\t\tAutor: " + autor + "\n" +
+                "\t\tEditorial: " + super.getEditorial() + "\n" +
+                "\t\tPáginas: " + super.getPaginas() + "\n" +
+                "\t\tColor: " + super.getColor() + "\n" +
+                "\t\tISBN: " + ISBN + "\n" +
+                "\t\tEjemplares disponibles: " + ejemplaresDisponibles + "\n\t}\n";
     }
 }

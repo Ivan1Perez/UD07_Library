@@ -16,12 +16,12 @@ public class Revista extends Publicacion{
 
     @Override
     public String toString() {
-        return "Revista\n" +
-                "Nombre: " + nombre + "\n" +
-                "Editorial: " + super.getEditorial() + "\n" +
-                "Temática: " + tematica + "\n" +
-                "Periodicidad: " + periodicidad + "\n" +
-                "Páginas: " + super.getPaginas() + "\n" +
-                "Color: " + super.getColor() + "\n";
+        return "\tRevista{\n" +
+                "\t\tNombre: " + nombre + "\n" +
+                "\t\tEditorial: " + super.getEditorial() + "\n" +
+                "\t\tTemática: " + tematica + "\n" +
+                "\t\tPeriodicidad: " + periodicidad + "\n" +
+                "\t\tPáginas: " + super.getPaginas() + "\n" +
+                "\t\tColor: " + super.getColor() + "\n\t}\n";
     }
 }

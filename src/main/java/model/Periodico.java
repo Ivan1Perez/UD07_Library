@@ -15,11 +15,11 @@ public class Periodico extends Publicacion{
 
     @Override
     public String toString() {
-        return "Periódico\n" +
-                "Nombre: " + nombre + "\n" +
-                "Editorial: " + super.getEditorial() + "\n" +
-                "Páginas: " + super.getPaginas() + "\n" +
-                "Color: " + super.getColor() + "\n" +
-                "Fecha de publicación: " + fechaPublicacion;
+        return "\tPeriódico{\n" +
+                "\t\tNombre: " + nombre + "\n" +
+                "\t\tEditorial: " + super.getEditorial() + "\n" +
+                "\t\tPáginas: " + super.getPaginas() + "\n" +
+                "\t\tColor: " + super.getColor() + "\n" +
+                "\t\tFecha de publicación: " + fechaPublicacion + "\n\t}\n";
     }
 }

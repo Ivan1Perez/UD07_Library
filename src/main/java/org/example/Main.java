@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
 
         Libro l1 = new Libro("El Papel", 348, Color.BLANCOYNEGRO,
-                "El camino de los dioses", "Antonio Cabanas", 46235456,
+                "Antonio Cabanas", "El camino de los dioses",
                 5);
 
         System.out.println(l1);
@@ -20,6 +20,14 @@ public class Main {
                 "El ABC", "22/06/2022");
 
         System.out.println(p1);
+
+        System.out.println(l1.getListaLibro());
+
+        System.out.println("Prestar libro 'El camino de los dioses'\nPréstamo realizado: " + l1.prestamo("El camino de los dioses"));
+        System.out.println();
+
+        System.out.println(l1.getListaLibro());
+
 
     }
 }
