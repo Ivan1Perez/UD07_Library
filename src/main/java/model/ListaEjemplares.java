@@ -60,7 +60,10 @@ public class ListaEjemplares {
         int i = 0;
 
                 while(aux!=null){
-                    output += "\t\tCódigo " + (++i) + ": " + aux.getInfo() + "\n";
+                    if(aux.getInfo().equalsIgnoreCase("disponible"))
+                        output += "\t\t[Código " + (++i) + "] | [" + aux.getInfo() + "]\n";
+                    else
+                        output += "\t\t[Código " + (++i) + "] | [Prestado a: " + aux.getInfo() + "]\n";
                     aux = aux.getNext();
                 }
 

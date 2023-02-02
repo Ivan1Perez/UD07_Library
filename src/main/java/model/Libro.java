@@ -7,7 +7,7 @@ public class Libro extends Publicacion{
     private int ejemplaresInicial;
     private int ejemplaresDisponibles;
     private String ISBN;
-    private String nombrePrestatario = "Sin prestar";
+    private String nombrePrestatario = "Disponible";
 
     private final ListaEjemplares listaEjemplares = new ListaEjemplares();
 

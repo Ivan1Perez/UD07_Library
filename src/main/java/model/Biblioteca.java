@@ -34,8 +34,8 @@ public class Biblioteca {
         return listaSocios;
     }
 
-//    public boolean prestamo(){
-//
-//    }
+    public boolean prestamo(){
+
+    }
 
 }
