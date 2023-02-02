@@ -60,7 +60,7 @@ public class ListaEjemplares {
         int i = 0;
 
                 while(aux!=null){
-                    output += "\t\tISBN " + (++i) + ": " + aux.getInfo() + "\n";
+                    output += "\t\tCódigo " + (++i) + ": " + aux.getInfo() + "\n";
                     aux = aux.getNext();
                 }
 

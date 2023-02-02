@@ -9,13 +9,15 @@ public class Socio{
     public Socio(String nombre, String DNI) {
         this.nombre = nombre;
         this.DNI = DNI;
+        Biblioteca.listaSocios.add(this);
     }
 
     @Override
     public String toString() {
-        return "Socio\n" +
-                "Nombre: " + nombre + "\n" +
-                "DNI: " + DNI + "\n" +
-                "Libros prestados: " + librosPrestados;
+        return "\tSocio{\n" +
+                "\t\tNombre: " + nombre + "\n" +
+                "\t\tDNI: " + DNI + "\n" +
+                "\t\tLibros prestados: " + librosPrestados + "\n" +
+                "\t}\n";
     }
 }

@@ -10,8 +10,8 @@ public class Main {
         System.out.println(Biblioteca.getListaLibros());
 
         Libro l1 = new Libro("El Papel", 348, Color.BLANCOYNEGRO,
-                "Antonio Cabanas", "El camino de los dioses",
-                5);
+                "Antonio Cabanas", "El camino de los dioses", "1122443399441"
+                , 5);
 //
 //        System.out.println(l1);
 //
@@ -25,7 +25,7 @@ public class Main {
 //
 //        System.out.println(p1);
 //
-//        System.out.println(l1.getListaEjemplares());
+        System.out.println(l1.getListaEjemplares());
 //
 ////        System.out.println("Prestar libro 'El camino de los dioses'\nPréstamo realizado: " + l1.prestamo("El camino de los dioses"));
 //        System.out.println();
@@ -33,10 +33,14 @@ public class Main {
 //        System.out.println(l1);
 //
         Libro l2 = new Libro("La Editorial", 280, Color.BLANCOYNEGRO,
-                "Miguel de Cervantes Saavedra", "Don Quijote de La Mancha",
-                6);
-//
+                "Miguel de Cervantes Saavedra", "Don Quijote de La Mancha", "4568125946321"
+                , 6);
+
+        Socio s1 = new Socio("Ivan Perez", "48711233H");
+
         System.out.println(Biblioteca.getListaLibros());
         System.out.println(Biblioteca.getListaRevistas());
+        System.out.println(Biblioteca.getListaPeriodicos());
+        System.out.println(Biblioteca.getListaSocios());
     }
 }

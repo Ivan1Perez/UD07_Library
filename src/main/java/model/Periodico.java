@@ -11,6 +11,7 @@ public class Periodico extends Publicacion{
         super(editorial, paginas, color);
         this.nombre = nombre;
         this.fechaPublicacion = fechaPublicacion;
+        Biblioteca.listaPeriodicos.add(this);
     }
 
     @Override
