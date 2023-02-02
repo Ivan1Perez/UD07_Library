@@ -12,6 +12,7 @@ public class Revista extends Publicacion{
         this.nombre = nombre;
         this.tematica = tematica;
         this.periodicidad = periodicidad;
+        Biblioteca.listaRevistas.add(this);
     }
 
     @Override

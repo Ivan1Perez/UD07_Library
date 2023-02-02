@@ -77,7 +77,7 @@ public class ListaEjemplares {
             this.next = null;
         }
 
-        public String getInfo() {
+        public String getInfo(){
             return ISBN;
         }
 

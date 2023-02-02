@@ -17,6 +17,7 @@ public class Libro extends Publicacion{
         ejemplaresDisponibles = ejemplaresInicial;
         for(int i = 0 ; i < ejemplaresInicial ; i++)
             listaEjemplares.add(generateISBN());
+        Biblioteca.listaLibros.add(this);
     }
 
 //    public boolean prestamo(String titulo){
@@ -27,6 +28,8 @@ public class Libro extends Publicacion{
 //
 //        return false;
 //    }
+
+
 
     public String generateISBN(){
         String numISBN = "";
