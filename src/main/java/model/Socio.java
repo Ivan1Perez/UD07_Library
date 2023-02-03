@@ -9,7 +9,6 @@ public class Socio{
     public Socio(String nombre, String DNI) {
         this.nombre = nombre;
         this.DNI = DNI;
-        Biblioteca.listaSocios.add(this);
     }
 
     public void prestamoObtenido(){
@@ -22,6 +21,11 @@ public class Socio{
 
     @Override
     public String toString() {
-        return "\t[Nombre: " + nombre + "\tDNI: " + DNI + "\tLibros prestados: " + ejemplaresPrestados + "]";
+        return "\t[Nombre: " + nombre + "   |   DNI: " + DNI + "   |   Libros prestados: " + ejemplaresPrestados + "]";
+    }
+
+    public String versionListaEjemplares(){
+        return "Nombre: " + nombre + " | DNI: " + DNI;
+
     }
 }

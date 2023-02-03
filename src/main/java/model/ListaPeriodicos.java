@@ -33,7 +33,7 @@ public class ListaPeriodicos {
             aux = aux.getNext();
         }
 
-        return output + "}";
+        return output + "\t}";
     }
 
     class Node{

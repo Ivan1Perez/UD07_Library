@@ -21,15 +21,17 @@ public class ListaLibros {
 
     public boolean getLibro(String titulo, Socio socio){
         Node aux = head;
-        boolean encotrado = false;
+        boolean encontrado = false;
         boolean disponible = false;
 
         if(head==null)
-            return encotrado;
+            return disponible;
         else{
-            while(aux!=null && !encotrado){
+            while(aux!=null && !encontrado){
+                //Aquí comprobamos que el libro buscado existe
                 if(aux.getInfo().getTitulo().equalsIgnoreCase(titulo)){
-                    encotrado = true;
+                    encontrado = true;
+                    //Aquí comprobamos que el libro está disponible
                     if(aux.getInfo().getListaEjemplares().estaDisponible(socio)){
                         disponible = true;
                     }
@@ -52,7 +54,7 @@ public class ListaLibros {
             aux = aux.getNext();
         }
 
-        return output + "}";
+        return output + "\t}";
     }
 
     class Node{

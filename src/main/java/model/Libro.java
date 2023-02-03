@@ -6,7 +6,6 @@ public class Libro extends Publicacion{
     private String titulo;
     private int ejemplaresInicial;
     private String ISBN;
-    private String nombrePrestatario = "Disponible";
     private Socio socio = null;
     private final ListaEjemplares listaEjemplares = new ListaEjemplares();
 
@@ -18,7 +17,6 @@ public class Libro extends Publicacion{
         this.ISBN = ISBN;
         for(int i = 0 ; i <= ejemplaresInicial ; i++)
             listaEjemplares.add(socio);
-        Biblioteca.listaLibros.add(this);
     }
 
     public String getTitulo() {
@@ -33,19 +31,14 @@ public class Libro extends Publicacion{
         return listaEjemplares;
     }
 
-    public void setNombrePrestatario(String nombrePrestatario){
-        this.nombrePrestatario = nombrePrestatario;
-    }
-
     @Override
     public String toString() {
-        return "\tLibro{\n" +
-                "\t\tTítulo: " + titulo + "\n" +
+        return "\t\tTítulo: " + titulo + "\n" +
                 "\t\tAutor: " + autor + "\n" +
                 "\t\tEditorial: " + super.getEditorial() + "\n" +
                 "\t\tPáginas: " + super.getPaginas() + "\n" +
                 "\t\tColor: " + super.getColor() + "\n" +
                 "\t\tISBN: " + ISBN + "\n" +
-                "\t\tEjemplares disponibles: " + listaEjemplares.getTotalDisponibles() + "\n\t}\n";
+                "\t\tEjemplares disponibles: " + listaEjemplares.getTotalDisponibles() + "\n";
     }
 }

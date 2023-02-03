@@ -12,17 +12,15 @@ public class Revista extends Publicacion{
         this.nombre = nombre;
         this.tematica = tematica;
         this.periodicidad = periodicidad;
-        Biblioteca.listaRevistas.add(this);
     }
 
     @Override
     public String toString() {
-        return "\tRevista{\n" +
-                "\t\tNombre: " + nombre + "\n" +
+        return "\t\tNombre: " + nombre + "\n" +
                 "\t\tEditorial: " + super.getEditorial() + "\n" +
                 "\t\tTemática: " + tematica + "\n" +
                 "\t\tPeriodicidad: " + periodicidad + "\n" +
                 "\t\tPáginas: " + super.getPaginas() + "\n" +
-                "\t\tColor: " + super.getColor() + "\n\t}\n";
+                "\t\tColor: " + super.getColor() + "\n";
     }
 }

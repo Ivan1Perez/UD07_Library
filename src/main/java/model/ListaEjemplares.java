@@ -64,7 +64,7 @@ public class ListaEjemplares {
                     if(aux.getInfo()==null)
                         output += "\t\t[Código " + (++i) + "] | [Disponible]\n";
                     else
-                        output += "\t\t[Código " + (++i) + "] | [Prestado a: " + aux.getInfo() + "\t]\n";
+                        output += "\t\t[Código " + (++i) + "] | [Prestado a → " + aux.getInfo().versionListaEjemplares() + "]\n";
                     aux = aux.getNext();
                 }
 

@@ -33,7 +33,7 @@ public class ListaRevistas {
             aux = aux.getNext();
         }
 
-        return output + "}";
+        return output + "\t}";
     }
 
     class Node{

@@ -27,11 +27,11 @@ public class ListaSocios {
                 "\tTotal de socios: " + size + "\n\n";
 
         while(aux!=null){
-            output += aux.getInfo() + "\n";
+            output += "\t" + aux.getInfo() + "\n";
             aux = aux.getNext();
         }
 
-        return output + "}";
+        return output + "\n\t}";
     }
 
     class Node{
