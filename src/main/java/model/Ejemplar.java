@@ -10,4 +10,11 @@ public class Ejemplar {
         this.codigo = codigo;
         this.libro = libro;
     }
+
+
+
+    @Override
+    public String toString() {
+        return "[Código: " + codigo + "  |  ISBN: " + libro.getISBN() + "]";
+    }
 }

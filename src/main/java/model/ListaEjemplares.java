@@ -10,7 +10,7 @@ public class ListaEjemplares {
 
     }
 
-    public void add(Socio info){
+    public void add(Ejemplar info){
         Node node = new Node(info);
 
         if(head==null)
@@ -23,21 +23,21 @@ public class ListaEjemplares {
         size++;
     }
 
-    public boolean estaDisponible(Socio socio){
-        boolean disponible = false;
-
-        Node aux = head;
-
-        while(aux!=null && !disponible){
-            if(aux.getInfo()==null) {
-                aux.setInfo(socio);
-                disponible = true;
-            }
-                aux = aux.getNext();
-        }
-
-        return disponible;
-    }
+//    public boolean estaDisponible(Socio socio){
+//        boolean disponible = false;
+//
+//        Node aux = head;
+//
+//        while(aux!=null && !disponible){
+//            if(aux.getInfo()==null) {
+//                aux.setInfo(socio);
+//                disponible = true;
+//            }
+//                aux = aux.getNext();
+//        }
+//
+//        return disponible;
+//    }
 
     public int getTotalDisponibles(){
         int numDisponibles = 0;
@@ -58,13 +58,9 @@ public class ListaEjemplares {
         String output = "Listado de Ejemplares{\n\t\t" +
                 "Total de ejemplares: " + size + "\n";
         Node aux = head;
-        int i = 0;
 
                 while(aux!=null){
-                    if(aux.getInfo()==null)
-                        output += "\t\t[Código " + (++i) + "] | [Disponible]\n";
-                    else
-                        output += "\t\t[Código " + (++i) + "] | [Prestado a → " + aux.getInfo().versionListaEjemplares() + "]\n";
+                    output += "\t\t" + aux.getInfo() + "\n";
                     aux = aux.getNext();
                 }
 
@@ -73,19 +69,19 @@ public class ListaEjemplares {
 
     class Node{
 
-        private Socio info;
+        private Ejemplar info;
         private Node next;
 
-        public Node(Socio info){
+        public Node(Ejemplar info){
             this.info = info;
             this.next = null;
         }
 
-        public Socio getInfo(){
+        public Ejemplar getInfo(){
             return info;
         }
 
-        public void setInfo(Socio info) {
+        public void setInfo(Ejemplar info) {
             this.info = info;
         }
 

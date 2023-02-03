@@ -7,7 +7,7 @@ public class Main {
 
         Biblioteca b1 = new Biblioteca();
 
-        System.out.println(b1.getListaRevistas());
+//        System.out.println(b1.getListaRevistas());
 
         Libro l1 = new Libro("El Papel", 348, Color.BLANCOYNEGRO,
                 "Antonio Cabanas", "El camino de los dioses", "1122443399441"
@@ -34,10 +34,10 @@ public class Main {
 
         b1.addSocio(s1);
 
-        System.out.println(b1.getListaLibros());
-        System.out.println(b1.getListaRevistas());
-        System.out.println(b1.getListaPeriodicos());
-        System.out.println(b1.getListaSocios());
+//        System.out.println(b1.getListaLibros());
+//        System.out.println(b1.getListaRevistas());
+//        System.out.println(b1.getListaPeriodicos());
+//        System.out.println(b1.getListaSocios());
         System.out.println();
 //        System.out.println(b1.prestamo("El camino de los dioss", s1));
 //        System.out.println(b1.prestamo("El camino de los dioses", s1));
@@ -50,11 +50,11 @@ public class Main {
 
 
         System.out.println(l1.printListaEjemplares());
-        System.out.println(s1);
+//        System.out.println(s1);
         System.out.println();
         System.out.println();
 
-        System.out.println(b1);
+//        System.out.println(b1);
 
     }
 }

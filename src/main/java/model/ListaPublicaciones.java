@@ -31,10 +31,10 @@ public class ListaPublicaciones {
 //        else{
 //            while(aux!=null && !encontrado){
 //                //Aquí comprobamos que el libro buscado existe
-//                if(aux.getInfo().getTitulo().equalsIgnoreCase(titulo)){
+//                if(aux.getInfo().toString().contains(titulo)){
 //                    encontrado = true;
 //                    //Aquí comprobamos que el libro está disponible
-//                    if(aux.getInfo().getListaEjemplares().estaDisponible(socio)){
+//                    if(aux.listaEjemplares.estaDisponible(socio)){
 //                        disponible = true;
 //                    }
 //                }
@@ -73,12 +73,15 @@ public class ListaPublicaciones {
     class Node{
 
         private Publicacion info;
+        private ListaEjemplares listaEjemplares;
         private Node next;
 
 
         public Node(Publicacion info) {
             this.info = info;
             next = null;
+            if(info instanceof Libro)
+                listaEjemplares = ((Libro) info).getListaEjemplares();
         }
 
         public Publicacion getInfo() {

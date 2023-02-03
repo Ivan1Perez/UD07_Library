@@ -6,7 +6,7 @@ public class Libro extends Publicacion{
     private String titulo;
     private int ejemplaresInicial;
     private String ISBN;
-    private Socio socio = null;
+    private Ejemplar ejemplar;
     private final ListaEjemplares listaEjemplares = new ListaEjemplares();
 
     public Libro(String editorial, int paginas, Color color, String autor, String titulo, String ISBN, int ejemplaresInicial) {
@@ -15,8 +15,8 @@ public class Libro extends Publicacion{
         this.titulo = titulo;
         this.ejemplaresInicial = ejemplaresInicial;
         this.ISBN = ISBN;
-        for(int i = 0 ; i <= ejemplaresInicial ; i++)
-            listaEjemplares.add(socio);
+        for(int i = 1 ; i <= ejemplaresInicial ; i++)
+            listaEjemplares.add(new Ejemplar(i, this));
     }
 
     public String getTitulo() {
@@ -29,6 +29,10 @@ public class Libro extends Publicacion{
 
     public ListaEjemplares getListaEjemplares(){
         return listaEjemplares;
+    }
+
+    public String getISBN() {
+        return ISBN;
     }
 
     @Override

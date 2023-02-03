@@ -24,8 +24,4 @@ public class Socio{
         return "\t[Nombre: " + nombre + "   |   DNI: " + DNI + "   |   Libros prestados: " + ejemplaresPrestados + "]";
     }
 
-    public String versionListaEjemplares(){
-        return "Nombre: " + nombre + " | DNI: " + DNI;
-
-    }
 }
