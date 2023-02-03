@@ -10,7 +10,7 @@ public class ListaEjemplares {
 
     }
 
-    public void add(String info){
+    public void add(Socio info){
         Node node = new Node(info);
 
         if(head==null)
@@ -23,34 +23,35 @@ public class ListaEjemplares {
         size++;
     }
 
-//    public boolean getTitulo(String titulo){
-//        Node aux = head;
-//        boolean encontrado = false;
-//
-//        if(size==0)
-//            return encontrado;
-//        else
-//            while(aux!=null && !encontrado){
-//                if(!aux.getInfo().contains(titulo))
-//                    aux = aux.getNext();
-//                else{
-//                    encontrado = true;
-//                }
-//            }
-//
-//        return encontrado;
-//    }
+    public boolean estaDisponible(Socio socio){
+        boolean disponible = false;
 
-//    public boolean setEjemplares(int cantidad){
-//        boolean actualizado = false;
-//
-//        if(size==0)
-//            return actualizado;
-//        else
-//            while(aux!=null)
-//
-//        return actualizado;
-//    }
+        Node aux = head;
+
+        while(aux!=null && !disponible){
+            if(aux.getInfo()==null) {
+                aux.setInfo(socio);
+                disponible = true;
+            }
+                aux = aux.getNext();
+        }
+
+        return disponible;
+    }
+
+    public int getTotalDisponibles(){
+        int numDisponibles = 0;
+
+        Node aux = head;
+
+        while(aux!=null){
+            if(aux.getInfo()==null)
+                numDisponibles++;
+            aux = aux.getNext();
+        }
+
+        return numDisponibles;
+    }
 
     @Override
     public String toString() {
@@ -60,10 +61,10 @@ public class ListaEjemplares {
         int i = 0;
 
                 while(aux!=null){
-                    if(aux.getInfo().equalsIgnoreCase("disponible"))
-                        output += "\t\t[Código " + (++i) + "] | [" + aux.getInfo() + "]\n";
+                    if(aux.getInfo()==null)
+                        output += "\t\t[Código " + (++i) + "] | [Disponible]\n";
                     else
-                        output += "\t\t[Código " + (++i) + "] | [Prestado a: " + aux.getInfo() + "]\n";
+                        output += "\t\t[Código " + (++i) + "] | [Prestado a: " + aux.getInfo() + "\t]\n";
                     aux = aux.getNext();
                 }
 
@@ -72,20 +73,20 @@ public class ListaEjemplares {
 
     class Node{
 
-        private String ISBN;
+        private Socio info;
         private Node next;
 
-        public Node(String ISBN){
-            this.ISBN = ISBN;
+        public Node(Socio info){
+            this.info = info;
             this.next = null;
         }
 
-        public String getInfo(){
-            return ISBN;
+        public Socio getInfo(){
+            return info;
         }
 
-        public void setInfo(String ISBN) {
-            this.ISBN = ISBN;
+        public void setInfo(Socio info) {
+            this.info = info;
         }
 
         public Node getNext() {
@@ -98,7 +99,7 @@ public class ListaEjemplares {
 
         @Override
         public String toString() {
-            return ISBN;
+            return info.toString();
         }
     }
 

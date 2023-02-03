@@ -19,6 +19,28 @@ public class ListaLibros {
         size++;
     }
 
+    public boolean getLibro(String titulo, Socio socio){
+        Node aux = head;
+        boolean encotrado = false;
+        boolean disponible = false;
+
+        if(head==null)
+            return encotrado;
+        else{
+            while(aux!=null && !encotrado){
+                if(aux.getInfo().getTitulo().equalsIgnoreCase(titulo)){
+                    encotrado = true;
+                    if(aux.getInfo().getListaEjemplares().estaDisponible(socio)){
+                        disponible = true;
+                    }
+                }
+                aux = aux.getNext();
+            }
+
+        }
+        return disponible;
+    }
+
     @Override
     public String toString() {
         Node aux = head;

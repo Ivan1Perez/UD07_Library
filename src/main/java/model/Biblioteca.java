@@ -18,24 +18,32 @@ public class Biblioteca {
 //        new Entrada();
     }
 
-    public static ListaLibros getListaLibros(){
+    public ListaLibros getListaLibros(){
         return listaLibros;
     }
 
-    public static ListaRevistas getListaRevistas(){
+    public ListaRevistas getListaRevistas(){
         return listaRevistas;
     }
 
-    public static ListaPeriodicos getListaPeriodicos(){
+    public ListaPeriodicos getListaPeriodicos(){
         return listaPeriodicos;
     }
 
-    public static ListaSocios getListaSocios(){
+    public ListaSocios getListaSocios(){
         return listaSocios;
     }
 
-    public boolean prestamo(){
-
+    public boolean prestamo(String titulo, Socio socio){
+        if(listaLibros.getLibro(titulo,socio)) {// && DNI.equalsIgnoreCase(listaSocios.getDNI()))
+            if(socio.getEjemplaresPrestados() < 3){
+                socio.prestamoObtenido();
+                return true;
+            }else
+                System.out.println("Lo sentimos, un socio no puede tener más de 3 ejemplares");
+        }else
+            System.out.println("El libro '" + titulo + "'no se encuentra en esta biblioteca.");
+        return false;
     }
 
 }

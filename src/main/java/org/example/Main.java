@@ -5,9 +5,9 @@ import model.*;
 public class Main {
     public static void main(String[] args) {
 
-//        new Biblioteca();
+        Biblioteca b1 = new Biblioteca();
 
-        System.out.println(Biblioteca.getListaLibros());
+        System.out.println(b1.getListaLibros());
 
         Libro l1 = new Libro("El Papel", 348, Color.BLANCOYNEGRO,
                 "Antonio Cabanas", "El camino de los dioses", "1122443399441"
@@ -25,7 +25,7 @@ public class Main {
 //
 //        System.out.println(p1);
 //
-        System.out.println(l1.getListaEjemplares());
+        System.out.println(l1.printListaEjemplares());
 //
 ////        System.out.println("Prestar libro 'El camino de los dioses'\nPréstamo realizado: " + l1.prestamo("El camino de los dioses"));
 //        System.out.println();
@@ -38,9 +38,19 @@ public class Main {
 
         Socio s1 = new Socio("Ivan Perez", "48711233H");
 
-        System.out.println(Biblioteca.getListaLibros());
-        System.out.println(Biblioteca.getListaRevistas());
-        System.out.println(Biblioteca.getListaPeriodicos());
-        System.out.println(Biblioteca.getListaSocios());
+        System.out.println(b1.getListaLibros());
+        System.out.println(b1.getListaRevistas());
+        System.out.println(b1.getListaPeriodicos());
+        System.out.println(b1.getListaSocios());
+        System.out.println();
+        System.out.println(b1.prestamo("El camino de los dioses", s1));
+        System.out.println(b1.prestamo("El camino de los dioses", s1));
+        System.out.println(b1.prestamo("El camino de los dioses", s1));
+        System.out.println(b1.prestamo("El camino de los dioses", s1));
+
+        System.out.println(l1.printListaEjemplares());
+        System.out.println(b1.getListaLibros());
+        System.out.println(s1);
+
     }
 }

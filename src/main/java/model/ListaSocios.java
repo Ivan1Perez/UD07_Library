@@ -17,6 +17,7 @@ public class ListaSocios {
             node.setNext(head);
             head = node;
         }
+        size++;
     }
 
     @Override
