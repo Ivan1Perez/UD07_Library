@@ -8,18 +8,18 @@ public class Biblioteca {
     private OpcionesIniciales opcionesIniciales;
     private Entrada entrada;
     private Libro libro;
-    private ListaLibros listaLibros;
-    private ListaRevistas listaRevistas;
-    private ListaPeriodicos listaPeriodicos;
+    private ListaPublicaciones listaLibros;
+    private ListaPublicaciones listaRevistas;
+    private ListaPublicaciones listaPeriodicos;
     private ListaSocios listaSocios;
 
     public Biblioteca() {
 //        System.out.println(opcionesIniciales = new OpcionesIniciales());
 //        new Entrada();
 
-        listaLibros = new ListaLibros();
-        listaRevistas = new ListaRevistas();
-        listaPeriodicos = new ListaPeriodicos();
+        listaLibros = new ListaPublicaciones();
+        listaRevistas = new ListaPublicaciones();
+        listaPeriodicos = new ListaPublicaciones();
         listaSocios = new ListaSocios();
     }
 
@@ -39,15 +39,15 @@ public class Biblioteca {
         listaSocios.add(socio);
     }
 
-    public ListaLibros getListaLibros(){
+    public ListaPublicaciones getListaLibros(){
         return listaLibros;
     }
 
-    public ListaRevistas getListaRevistas(){
+    public ListaPublicaciones getListaRevistas(){
         return listaRevistas;
     }
 
-    public ListaPeriodicos getListaPeriodicos(){
+    public ListaPublicaciones getListaPeriodicos(){
         return listaPeriodicos;
     }
 
@@ -55,17 +55,17 @@ public class Biblioteca {
         return listaSocios;
     }
 
-    public boolean prestamo(String titulo, Socio socio){
-        if(listaLibros.getLibro(titulo,socio)) {
-            if(socio.getEjemplaresPrestados() < 3){
-                socio.prestamoObtenido();
-                return true;
-            }else
-                System.out.println("Lo sentimos, un socio no puede tener más de 3 ejemplares");
-        }else
-            System.out.println("El libro '" + titulo + "' no se encuentra en esta biblioteca.");
-        return false;
-    }
+//    public boolean prestamo(String titulo, Socio socio){
+//        if(listaLibros.getLibro(titulo,socio)) {
+//            if(socio.getEjemplaresPrestados() < 3){
+//                socio.prestamoObtenido();
+//                return true;
+//            }else
+//                System.out.println("Lo sentimos, un socio no puede tener más de 3 ejemplares");
+//        }else
+//            System.out.println("El libro '" + titulo + "' no se encuentra en esta biblioteca.");
+//        return false;
+//    }
 
     @Override
     public String toString() {

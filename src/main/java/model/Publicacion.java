@@ -1,6 +1,6 @@
 package model;
 
-public class Publicacion {
+public abstract class Publicacion {
 
     private String editorial;
     private int paginas;
@@ -23,6 +23,10 @@ public class Publicacion {
     public Color getColor() {
         return color;
     }
+
+//    public String getTitulo(){
+//        return ge
+//    }
 
 
 
