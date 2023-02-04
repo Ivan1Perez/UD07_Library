@@ -23,8 +23,8 @@ public class ListaPrestamos {
 
     @Override
     public String toString(){
-        String output = "Listado de Prestamos{\n\t\t" +
-                "Total de prestamos: " + size + "\n";
+        String output = "Listado de préstamos{\n\t\t" +
+                "Total de préstamos: " + size + "\n";
 
         Node aux = head;
 
@@ -33,7 +33,7 @@ public class ListaPrestamos {
             aux = aux.getNext();
         }
 
-        return output + "\t}";
+        return output;
     }
 
     class Node{

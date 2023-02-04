@@ -1,9 +1,8 @@
 package model;
 
 import model.menu.OpcionesIniciales;
-import java.util.Scanner;
+
 import java.util.Date;
-import java.text.SimpleDateFormat;
 
 public class Biblioteca {
 
@@ -57,11 +56,33 @@ public class Biblioteca {
         return listaSocios;
     }
 
-    public void prestarLibro(Libro libro, Socio socio){
-        Date fechaPrestacion = new Date();
-        new Prestamo(socio, fechaPrestacion, null);
-        libro.
+    public boolean prestarLibro(Libro libro, Socio socio){
+        boolean prestamoRealizado = false;
+
+        if(libro.getListaEjemplares().disponible(new Prestamo(socio, new Date(), null))){
+            prestamoRealizado = true;
+        }
+        return prestamoRealizado;
     }
+
+    public boolean devolverLibro(Libro libro, Socio socio){
+        boolean devolucionRealizada = false;
+        int posicion = 0;
+
+
+        while(posicion < libro.getListaEjemplares().getSize()){
+            if(libro.getListaEjemplares().get(posicion).equals(socio.getListaEjemplares().get(posicion))){
+
+            }
+            posicion++;
+        }
+
+        return devolucionRealizada;
+    }
+
+    @Override
+
+
 
     @Override
     public String toString() {

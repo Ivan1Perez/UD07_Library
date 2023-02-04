@@ -3,24 +3,81 @@ package model;
 public class ListaEjemplares {
 
     private int size;
-
     private Node head;
+    private Node tail;
 
     public ListaEjemplares() {
 
     }
 
+    public int getSize() {
+        return size;
+    }
+
     public void add(Ejemplar info){
         Node node = new Node(info);
 
-        if(head==null)
+        if(head==null) {
             head = node;
+            tail = node;
+        }
         else{
-            node.setNext(head);
-            head = node;
+            tail.setNext(node);
+            tail = node;
         }
 
         size++;
+    }
+
+    public boolean disponible(Prestamo prestamo){
+        Node aux = head;
+        boolean estaDisponible = false;
+
+        if(head==null)
+            return estaDisponible;
+        else{
+            while(aux!=null && !estaDisponible){
+                if(aux.getInfo().isDisponible() && prestamo.getSocio().getEjemplaresPrestados() < 3){
+                    aux.getInfo().setDisponible(false);
+                    aux.getInfo().addPrestamo(prestamo);
+                    prestamo.getSocio().addEjemplar(aux.getInfo());
+                    estaDisponible = true;
+                }
+                aux = aux.getNext();
+            }
+        }
+
+        return estaDisponible;
+    }
+
+    public ListaPrestamos getListaPrestamos(int index){
+        Node aux = head;
+
+        if(index>=size || index < 0)
+            return null;
+        else{
+            while(index > 0) {
+                aux = aux.getNext();
+                index--;
+            }
+        }
+
+        return aux.getInfo().getListaPrestamos();
+    }
+
+    public Ejemplar get(int index){
+        Node aux = head;
+
+        if(index>=size || index < 0)
+            return null;
+        else {
+            while(index > 0){
+                aux = aux.getNext();
+                index--;
+            }
+        }
+
+        return aux.getInfo();
     }
 
     @Override

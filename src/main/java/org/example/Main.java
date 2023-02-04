@@ -31,35 +31,45 @@ public class Main {
         b1.addLibro(l2);
 
         Socio s1 = new Socio("Ivan Perez", "48711233H");
+        Socio s2 = new Socio("Juan Lopez", "85299963D");
 
         b1.addSocio(s1);
+        b1.addSocio(s2);
 
         System.out.println(b1.getListaLibros());
         System.out.println(b1.getListaRevistas());
         System.out.println(b1.getListaPeriodicos());
         System.out.println(b1.getListaSocios());
         System.out.println();
-//        System.out.println(b1.prestamo("El camino de los dioss", s1));
-//        System.out.println(b1.prestamo("El camino de los dioses", s1));
-//        System.out.println(b1.prestamo("El camino de los dioses", s1));
-//        System.out.println(b1.prestamo("El camino de los dioses", s1));
-//        System.out.println(b1.prestamo("El camino de los dioses", s1));
-//        System.out.println(b1.prestamo("El camino de los dioses", s1));
-//        System.out.println(b1.prestamo("El camino de los dioses", s1));
-//        System.out.println(b1.prestamo("El camino de los dioses", s1));
-
 
         System.out.println(l1.printListaEjemplares());
-        System.out.println(s1);
         System.out.println();
         System.out.println();
 
         System.out.println(b1);
         System.out.println();
 
-        b1.prestarLibro(l1,s1);
+        System.out.println(b1.prestarLibro(l1, s1));
+        System.out.println(b1.prestarLibro(l1, s1));
+        System.out.println(b1.prestarLibro(l1, s1));
+        System.out.println(b1.prestarLibro(l1, s1));
+        System.out.println(b1.prestarLibro(l1, s1));
+        System.out.println(b1.prestarLibro(l1, s2));
+
 
         System.out.println();
+
+        System.out.println(l1.printListaEjemplares());
+        System.out.println();
+
+        System.out.println("'" + l1.getTitulo() + "'\n" + l1.getListaEjemplares().getListaPrestamos(0));
+        System.out.println();
+        System.out.println();
+        System.out.println(s1);
+        System.out.println(s2);
+
+        System.out.println(s1.getEjemplaresPrestados());
+
 
     }
 }
