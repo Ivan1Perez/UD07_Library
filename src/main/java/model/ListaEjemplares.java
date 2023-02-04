@@ -37,7 +37,7 @@ public class ListaEjemplares {
             return estaDisponible;
         else{
             while(aux!=null && !estaDisponible){
-                if(aux.getInfo().isDisponible() && prestamo.getSocio().getEjemplaresPrestados() < 3){
+                if(aux.getInfo().isDisponible() && prestamo.getSocio().getNumPrestamos() < 3){
                     aux.getInfo().setDisponible(false);
                     aux.getInfo().addPrestamo(prestamo);
                     prestamo.getSocio().addEjemplar(aux.getInfo());

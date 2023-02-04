@@ -5,6 +5,7 @@ public class Socio{
     private String nombre;
     private String DNI;
     private ListaEjemplares listaEjemplares;
+    private int numPrestamos;
 
     public Socio(String nombre, String DNI) {
         this.nombre = nombre;
@@ -14,6 +15,18 @@ public class Socio{
 
     public void addEjemplar(Ejemplar ejemplar){
         listaEjemplares.add(ejemplar);
+    }
+
+    public void addNumPrestamos(){
+        numPrestamos++;
+    }
+
+    public void removeNumPrestamo(){
+        numPrestamos--;
+    }
+
+    public int getNumPrestamos() {
+        return numPrestamos;
     }
 
     public ListaEjemplares getListaEjemplares() {
@@ -26,7 +39,7 @@ public class Socio{
 
     @Override
     public String toString() {
-        return "\t[Nombre: " + nombre + "   |   DNI: " + DNI + "   |   Libros prestados: " + getEjemplaresPrestados() + "]";
+        return "\t[Nombre: " + nombre + "   |   DNI: " + DNI + "   |   Libros prestados: " + numPrestamos + "]";
     }
 
 }

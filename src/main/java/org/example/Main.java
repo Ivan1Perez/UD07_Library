@@ -69,6 +69,13 @@ public class Main {
         System.out.println(s2);
 
         System.out.println(s1.getEjemplaresPrestados());
+        System.out.println();
+        System.out.println();
+        System.out.println(b1.devolverLibro(l1,s1));
+        System.out.println(b1.devolverLibro(l1,s1));
+        System.out.println();
+        System.out.println(l1.printListaEjemplares());
+        System.out.println(s1.getListaEjemplares());
 
 
     }

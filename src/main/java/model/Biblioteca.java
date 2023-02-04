@@ -60,6 +60,7 @@ public class Biblioteca {
         boolean prestamoRealizado = false;
 
         if(libro.getListaEjemplares().disponible(new Prestamo(socio, new Date(), null))){
+            socio.addNumPrestamos();
             prestamoRealizado = true;
         }
         return prestamoRealizado;
@@ -70,18 +71,20 @@ public class Biblioteca {
         int posicion = 0;
 
 
-        while(posicion < libro.getListaEjemplares().getSize()){
-            if(libro.getListaEjemplares().get(posicion).equals(socio.getListaEjemplares().get(posicion))){
-
+        while(posicion < libro.getListaEjemplares().getSize() && !devolucionRealizada){
+            if(libro.getListaEjemplares().get(posicion).equals(socio.getListaEjemplares().get(posicion))
+                && !libro.getListaEjemplares().get(posicion).isDisponible()){
+                    //Sobreescribir método equals???
+                libro.getListaEjemplares().get(posicion).setDisponible(true);
+//                socio.getListaEjemplares().get(posicion).setDisponible(true);
+                socio.removeNumPrestamo();
+                devolucionRealizada = true;
             }
             posicion++;
         }
 
         return devolucionRealizada;
     }
-
-    @Override
-
 
 
     @Override
