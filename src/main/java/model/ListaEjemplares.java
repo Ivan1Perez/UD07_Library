@@ -23,36 +23,6 @@ public class ListaEjemplares {
         size++;
     }
 
-//    public boolean estaDisponible(Socio socio){
-//        boolean disponible = false;
-//
-//        Node aux = head;
-//
-//        while(aux!=null && !disponible){
-//            if(aux.getInfo()==null) {
-//                aux.setInfo(socio);
-//                disponible = true;
-//            }
-//                aux = aux.getNext();
-//        }
-//
-//        return disponible;
-//    }
-
-    public int getTotalDisponibles(){
-        int numDisponibles = 0;
-
-        Node aux = head;
-
-        while(aux!=null){
-            if(aux.getInfo()==null)
-                numDisponibles++;
-            aux = aux.getNext();
-        }
-
-        return numDisponibles;
-    }
-
     @Override
     public String toString() {
         String output = "Listado de Ejemplares{\n\t\t" +

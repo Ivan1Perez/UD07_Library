@@ -43,6 +43,6 @@ public class Libro extends Publicacion{
                 "\t\tPáginas: " + super.getPaginas() + "\n" +
                 "\t\tColor: " + super.getColor() + "\n" +
                 "\t\tISBN: " + ISBN + "\n" +
-                "\t\tEjemplares disponibles: " + listaEjemplares.getTotalDisponibles() + "\n";
+                "\t\tEjemplares disponibles: " + ejemplaresInicial + "\n";
     }
 }

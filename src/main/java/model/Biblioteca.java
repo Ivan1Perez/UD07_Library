@@ -2,6 +2,8 @@ package model;
 
 import model.menu.OpcionesIniciales;
 import java.util.Scanner;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 public class Biblioteca {
 
@@ -55,17 +57,11 @@ public class Biblioteca {
         return listaSocios;
     }
 
-//    public boolean prestamo(String titulo, Socio socio){
-//        if(listaLibros.getLibro(titulo,socio)) {
-//            if(socio.getEjemplaresPrestados() < 3){
-//                socio.prestamoObtenido();
-//                return true;
-//            }else
-//                System.out.println("Lo sentimos, un socio no puede tener más de 3 ejemplares");
-//        }else
-//            System.out.println("El libro '" + titulo + "' no se encuentra en esta biblioteca.");
-//        return false;
-//    }
+    public void prestarLibro(Libro libro, Socio socio){
+        Date fechaPrestacion = new Date();
+        new Prestamo(socio, fechaPrestacion, null);
+        libro.
+    }
 
     @Override
     public String toString() {
