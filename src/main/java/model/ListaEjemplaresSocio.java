@@ -56,7 +56,7 @@ public class ListaEjemplaresSocio {
         while(aux!=null){
             output += "\t\t[Libro: '" + aux.getInfo().getTitulo() + "']\n" +
                     "\t\t" + aux.getInfo() + "]\n" +
-                    "\t\t[Fecha de prestación: " + formatter.format(aux.getInfo().getListaPrestamos().get(aux.getInfo().getListaPrestamos().getSize()-1).getPrestado()) + "]\n" +
+                    "\t\t[Fecha de préstamo: " + formatter.format(aux.getInfo().getListaPrestamos().get(aux.getInfo().getListaPrestamos().getSize()-1).getPrestado()) + "]\n" +
                     "\t\t[Fecha de devolución: ";
             if(aux.getInfo().getListaPrestamos().get(aux.getInfo().getListaPrestamos().getSize()-1).getDevuelto()==null)
                 output += "No devuelto]\n\n";
