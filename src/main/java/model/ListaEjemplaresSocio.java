@@ -1,27 +1,34 @@
 package model;
 
-public class ListaPrestamos {
+public class ListaEjemplaresSocio {
 
     private int size;
     private Node head;
+    private Node tail;
 
-    public ListaPrestamos() {
+    public ListaEjemplaresSocio() {
     }
 
-    public void add(Prestamo info){
-        Node node = new Node(info);
+    public int getSize() {
+        return size;
+    }
 
-        if(head==null)
+    public void add(Ejemplar ejemplar){
+        Node node = new Node(ejemplar);
+
+        if(head==null) {
             head = node;
+            tail = node;
+        }
         else{
-            node.setNext(head);
-            head = node;
+            tail.setNext(node);
+            tail = node;
         }
 
         size++;
     }
 
-    public Prestamo get(int index){
+    public Ejemplar get(int index){
         Node aux = head;
 
         if(index>=size || index < 0)
@@ -37,35 +44,36 @@ public class ListaPrestamos {
     }
 
     @Override
-    public String toString(){
-        String output = "Listado de préstamos{\n\t\t" +
+    public String toString() {
+        String output = "Historial de Préstamos{\n\t\t" +
                 "Total de préstamos: " + size + "\n\n";
-
         Node aux = head;
+        int i = 0;
 
         while(aux!=null){
-            output += aux.getInfo() + "\n";
+            output += "\t" + aux.getInfo().getListaPrestamos().get(i) + "\n";
             aux = aux.getNext();
+            i++;
         }
 
-        return output;
+        return output + "\t}\n";
     }
 
     class Node{
 
-        private Prestamo info;
+        private Ejemplar info;
         private Node next;
 
-        public Node(Prestamo info) {
+        public Node (Ejemplar info){
             this.info = info;
-            this.next = null;
+            next = null;
         }
 
-        public Prestamo getInfo() {
+        public Ejemplar getInfo() {
             return info;
         }
 
-        public void setInfo(Prestamo info) {
+        public void setInfo(Ejemplar info) {
             this.info = info;
         }
 
@@ -82,6 +90,5 @@ public class ListaPrestamos {
             return info.toString();
         }
     }
-
 
 }

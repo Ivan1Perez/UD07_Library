@@ -7,8 +7,6 @@ public class Main {
 
         Biblioteca b1 = new Biblioteca();
 
-//        System.out.println(b1.getListaRevistas());
-
         Libro l1 = new Libro("El Papel", 348, Color.BLANCOYNEGRO,
                 "Antonio Cabanas", "El camino de los dioses", "1122443399441"
                 , 5);
@@ -20,8 +18,6 @@ public class Main {
 
         b1.addPeriodico(new Periodico("ABC", 143, Color.COLOR,
                 "El ABC", "22/06/2022"));
-
-        System.out.println(l1.printListaEjemplares());
 
 
         Libro l2 = new Libro("La Editorial", 280, Color.BLANCOYNEGRO,
@@ -63,19 +59,26 @@ public class Main {
         System.out.println();
 
         System.out.println("'" + l1.getTitulo() + "'\n" + l1.getListaEjemplares().getListaPrestamos(0));
-        System.out.println();
-        System.out.println();
         System.out.println(s1);
         System.out.println(s2);
 
-        System.out.println(s1.getEjemplaresPrestados());
         System.out.println();
         System.out.println();
         System.out.println(b1.devolverLibro(l1,s1));
         System.out.println(b1.devolverLibro(l1,s1));
+//        System.out.println(b1.prestarLibro(l1, s1));
+        System.out.println(b1.prestarLibro(l1, s1));
+
         System.out.println();
         System.out.println(l1.printListaEjemplares());
-        System.out.println(s1.getListaEjemplares());
+        System.out.println(s1.printListaEjemplares());
+        System.out.println(s1);
+        System.out.println();
+        System.out.println(s2.printListaEjemplares());
+        System.out.println();
+
+
+
 
 
     }

@@ -4,13 +4,13 @@ public class Socio{
 
     private String nombre;
     private String DNI;
-    private ListaEjemplares listaEjemplares;
+    private ListaEjemplaresSocio listaEjemplares;
     private int numPrestamos;
 
     public Socio(String nombre, String DNI) {
         this.nombre = nombre;
         this.DNI = DNI;
-        listaEjemplares = new ListaEjemplares();
+        listaEjemplares = new ListaEjemplaresSocio();
     }
 
     public void addEjemplar(Ejemplar ejemplar){
@@ -29,7 +29,12 @@ public class Socio{
         return numPrestamos;
     }
 
-    public ListaEjemplares getListaEjemplares() {
+    public String printListaEjemplares(){
+        return "[Nombre: " + nombre + "   |   DNI: " + DNI + "]{\n" +
+                "\t" + listaEjemplares + "\n}";
+    }
+
+    public ListaEjemplaresSocio getListaEjemplares() {
         return listaEjemplares;
     }
 

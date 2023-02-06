@@ -14,6 +14,10 @@ public class Ejemplar {
         listaPrestamos = new ListaPrestamos();
     }
 
+    public int getCodigo() {
+        return codigo;
+    }
+
     public boolean isDisponible() {
         return disponible;
     }
@@ -32,13 +36,7 @@ public class Ejemplar {
 
     @Override
     public String toString() {
-        String output = "[Código: " + codigo + "  |  ISBN: " + libro.getISBN();
+        return "[Código: " + codigo + "  |  ISBN: " + libro.getISBN();
 
-        if(disponible)
-            output += "  |  Disponible]";
-        else
-            output += "  |  Prestado]";
-
-        return output;
     }
 }

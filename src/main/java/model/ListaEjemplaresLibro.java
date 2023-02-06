@@ -1,12 +1,12 @@
 package model;
 
-public class ListaEjemplares {
+public class ListaEjemplaresLibro {
 
     private int size;
     private Node head;
     private Node tail;
 
-    public ListaEjemplares() {
+    public ListaEjemplaresLibro() {
 
     }
 
@@ -86,12 +86,15 @@ public class ListaEjemplares {
                 "Total de ejemplares: " + size + "\n";
         Node aux = head;
 
-                while(aux!=null){
-                    output += "\t\t" + aux.getInfo() + "\n";
-                    aux = aux.getNext();
-                }
+        while(aux!=null){
+            if(aux.getInfo().isDisponible())
+                output += "\t\t" + aux.getInfo() + "  |  Disponile]\n";
+            else
+                output += "\t\t" + aux.getInfo() + "  |  Prestado]\n";
+            aux = aux.getNext();
+        }
 
-            return output + "\t}\n";
+        return output + "\t}\n";
     }
 
     class Node{

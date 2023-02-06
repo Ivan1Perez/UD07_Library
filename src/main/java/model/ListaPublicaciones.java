@@ -73,7 +73,7 @@ public class ListaPublicaciones {
     class Node{
 
         private Publicacion info;
-        private ListaEjemplares listaEjemplares;
+        private ListaEjemplaresLibro listaEjemplares;
         private Node next;
 
 

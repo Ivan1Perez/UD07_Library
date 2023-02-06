@@ -28,9 +28,9 @@ public class Prestamo {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
         if(devuelto==null)
-            return socio + "\n\t[Fecha de prestación: " + formatter.format(prestado) + "]";
+            return socio + "\n\t[Fecha de prestación: " + formatter.format(prestado) + "]\n";
 
         return socio + "\n\t[Fecha de prestación: " + formatter.format(prestado) + "]\n" +
-                "\t[Fecha de devolución: " + formatter.format(devuelto) + "]";
+                "\t[Fecha de devolución: " + formatter.format(devuelto) + "]\n";
     }
 }
