@@ -22,6 +22,10 @@ public class Ejemplar {
         return disponible;
     }
 
+    public String getTitulo(){
+        return libro.getTitulo();
+    }
+
     public void setDisponible(boolean disponible) {
         this.disponible = disponible;
     }

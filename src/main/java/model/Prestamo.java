@@ -23,14 +23,22 @@ public class Prestamo {
         this.devuelto = devuelto;
     }
 
+    public Date getPrestado() {
+        return prestado;
+    }
+
+    public Date getDevuelto() {
+        return devuelto;
+    }
+
     @Override
     public String toString() {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
         if(devuelto==null)
-            return socio + "\n\t[Fecha de prestación: " + formatter.format(prestado) + "]\n";
+            return socio + "\n\t\t[Fecha de prestación: " + formatter.format(prestado) + "]\n";
 
-        return socio + "\n\t[Fecha de prestación: " + formatter.format(prestado) + "]\n" +
-                "\t[Fecha de devolución: " + formatter.format(devuelto) + "]\n";
+        return socio + "\n\t\t[Fecha de prestación: " + formatter.format(prestado) + "]\n" +
+                "\t\t[Fecha de devolución: " + formatter.format(devuelto) + "]\n";
     }
 }

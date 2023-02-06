@@ -1,5 +1,7 @@
 package model;
 
+import java.text.SimpleDateFormat;
+
 public class ListaEjemplaresSocio {
 
     private int size;
@@ -45,13 +47,21 @@ public class ListaEjemplaresSocio {
 
     @Override
     public String toString() {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String output = "Historial de Préstamos{\n\t\t" +
                 "Total de préstamos: " + size + "\n\n";
         Node aux = head;
         int i = 0;
 
         while(aux!=null){
-            output += "\t" + aux.getInfo().getListaPrestamos().get(i) + "\n";
+            output += "\t\t[Libro: '" + aux.getInfo().getTitulo() + "']\n" +
+                    "\t\t" + aux.getInfo() + "]\n" +
+                    "\t\t[Fecha de prestación: " + formatter.format(aux.getInfo().getListaPrestamos().get(aux.getInfo().getListaPrestamos().getSize()-1).getPrestado()) + "]\n" +
+                    "\t\t[Fecha de devolución: ";
+            if(aux.getInfo().getListaPrestamos().get(aux.getInfo().getListaPrestamos().getSize()-1).getDevuelto()==null)
+                output += "No devuelto]\n\n";
+            else
+                output += formatter.format(aux.getInfo().getListaPrestamos().get(aux.getInfo().getListaPrestamos().getSize()-1).getDevuelto()) + "]\n\n";
             aux = aux.getNext();
             i++;
         }

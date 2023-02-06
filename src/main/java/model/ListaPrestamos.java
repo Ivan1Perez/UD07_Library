@@ -4,18 +4,25 @@ public class ListaPrestamos {
 
     private int size;
     private Node head;
+    private Node tail;
 
     public ListaPrestamos() {
+    }
+
+    public int getSize() {
+        return size;
     }
 
     public void add(Prestamo info){
         Node node = new Node(info);
 
-        if(head==null)
+        if(head==null){
             head = node;
+            tail = node;
+        }
         else{
-            node.setNext(head);
-            head = node;
+            tail.setNext(node);
+            tail = node;
         }
 
         size++;

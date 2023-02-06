@@ -32,11 +32,6 @@ public class Main {
         b1.addSocio(s1);
         b1.addSocio(s2);
 
-        System.out.println(b1.getListaLibros());
-        System.out.println(b1.getListaRevistas());
-        System.out.println(b1.getListaPeriodicos());
-        System.out.println(b1.getListaSocios());
-        System.out.println();
 
         System.out.println(l1.printListaEjemplares());
         System.out.println();

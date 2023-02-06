@@ -76,6 +76,8 @@ public class Biblioteca {
                 && !libro.getListaEjemplares().get(posicion).isDisponible()){
                     //Sobreescribir método equals???
                 libro.getListaEjemplares().get(posicion).setDisponible(true);
+                libro.getListaEjemplares().get(posicion).getListaPrestamos().
+                        get(libro.getListaEjemplares().get(posicion).getListaPrestamos().getSize()-1).setDevuelto(new Date());
 //                socio.getListaEjemplares().get(posicion).setDisponible(true);
                 socio.removeNumPrestamo();
                 devolucionRealizada = true;
