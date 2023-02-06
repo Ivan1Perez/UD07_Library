@@ -7,7 +7,7 @@ public class Libro extends Publicacion{
     private int ejemplaresInicial;
     private String ISBN;
     private Ejemplar ejemplar;
-    protected ListaEjemplaresLibro listaEjemplares = new ListaEjemplaresLibro();
+    protected ListaSE<Ejemplar> listaEjemplares = new ListaSE<>();
 
     public Libro(String editorial, int paginas, Color color, String autor, String titulo, String ISBN, int ejemplaresInicial) {
         super(editorial, paginas, color);
@@ -27,7 +27,7 @@ public class Libro extends Publicacion{
         return "Libro '" + titulo + "'{\n\t" + listaEjemplares + "}";
     }
 
-    public ListaEjemplaresLibro getListaEjemplares(){
+    public ListaSE<Ejemplar> getListaEjemplares(){
         return listaEjemplares;
     }
 

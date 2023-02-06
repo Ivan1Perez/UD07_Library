@@ -4,14 +4,14 @@ public class Ejemplar {
 
     private int codigo;
     private Libro libro;
-    private ListaPrestamos listaPrestamos;
+    private ListaSE<Prestamo> listaPrestamos;
     private boolean disponible;
 
     public Ejemplar(int codigo, Libro libro) {
         this.codigo = codigo;
         this.libro = libro;
         disponible = true;
-        listaPrestamos = new ListaPrestamos();
+        listaPrestamos = new ListaSE<>();
     }
 
     public int getCodigo() {
@@ -30,7 +30,7 @@ public class Ejemplar {
         this.disponible = disponible;
     }
 
-    public ListaPrestamos getListaPrestamos() {
+    public ListaSE<Prestamo> getListaPrestamos() {
         return listaPrestamos;
     }
 
@@ -41,6 +41,5 @@ public class Ejemplar {
     @Override
     public String toString() {
         return "[Código: " + codigo + "  |  ISBN: " + libro.getISBN();
-
     }
 }
