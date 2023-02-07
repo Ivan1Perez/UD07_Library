@@ -38,51 +38,22 @@ public class Main {
 
 
         System.out.println(l1.printListaEjemplares());
+//        System.out.println();
         System.out.println();
-        System.out.println();
-
-        System.out.println(b1);
+//
+//        System.out.println(b1);
         System.out.println();
 
         System.out.println(b1.prestarLibro(l1, s1));
         System.out.println(b1.prestarLibro(l1, s1));
         System.out.println(b1.prestarLibro(l1, s1));
-        System.out.println(b1.prestarLibro(l1, s1));
-        System.out.println(b1.prestarLibro(l1, s1));
-        System.out.println(b1.prestarLibro(l1, s2));
-//        System.out.println(b1.devolverLibro(l1,s1));
-//        System.out.println(b1.devolverLibro(l1,s1));
-//        System.out.println(b1.prestarLibro(l1, s1));
-//        System.out.println(b1.prestarLibro(l1, s1));
-
-        System.out.println();
-
-        System.out.println(l1.printListaEjemplares());
-        System.out.println();
-
-        //Esta línea hace referencia al préstamo concreto de este concreto ejemplar.
-        System.out.println("'" + l1.getTitulo() + "'\n" + l1.getListaEjemplares().getEjemplar(0).getListaPrestamos().getPrestamo(0));
-        System.out.println("'" + l1.getTitulo() + "'\n" + l1.getListaEjemplares().getEjemplar(0).getListaPrestamos());
-
-        System.out.println(s1);
-        System.out.println(s2);
-
-        System.out.println();
-        System.out.println();
-        System.out.println(b1.devolverLibro(l1,s1));
-        System.out.println(b1.devolverLibro(l1,s1));
-//        System.out.println(b1.prestarLibro(l1, s1));
         System.out.println(b1.prestarLibro(l1, s1));
 
 
         System.out.println();
         System.out.println(l1.printListaEjemplares());
-        System.out.println(s1.printListaEjemplares());
-        System.out.println(s1);
-        System.out.println();
-        System.out.println(s2.printListaEjemplares());
-        System.out.println();
 
+        System.out.println(l1.getListaEjemplares().get(0).getListaPrestamos());
 
 
     }

@@ -26,6 +26,10 @@ public class Ejemplar {
         return libro.getTitulo();
     }
 
+    public String getISBN(){
+        return libro.getISBN();
+    }
+
     public void setDisponible(boolean disponible) {
         this.disponible = disponible;
     }
@@ -40,6 +44,10 @@ public class Ejemplar {
 
     @Override
     public String toString() {
-        return "[Código: " + codigo + "  |  ISBN: " + libro.getISBN();
+
+        if(isDisponible())
+            return "\t\t[Código: " + codigo + "  |  ISBN: " + libro.getISBN() + "  |  Disponible]";
+
+        return "\t\t[Código: " + codigo + "  |  ISBN: " + libro.getISBN() + "  |  Prestado]";
     }
 }

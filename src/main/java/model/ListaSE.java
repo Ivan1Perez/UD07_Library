@@ -30,43 +30,7 @@ public class ListaSE<T> {
         size++;
     }
 
-    public boolean disponible(Prestamo prestamo){
-        Node<T> aux = head;
-        boolean estaDisponible = false;
-
-        if(head==null)
-            return estaDisponible;
-        else{
-            while(aux!=null && !estaDisponible){
-                if(((Ejemplar)aux.getInfo()).isDisponible() && prestamo.getSocio().getNumPrestamos() < 3){
-                    ((Ejemplar)aux.getInfo()).setDisponible(false);
-                    ((Ejemplar)aux.getInfo()).addPrestamo(prestamo);
-                    prestamo.getSocio().addEjemplar((Ejemplar) aux.getInfo());
-                    estaDisponible = true;
-                }
-                aux = aux.getNext();
-            }
-        }
-
-        return estaDisponible;
-    }
-
-    public ListaSE<Prestamo> getListaPrestamos(int index){
-        Node<T> aux = head;
-
-        if(index>=size || index < 0)
-            return null;
-        else{
-            while(index > 0) {
-                aux = aux.getNext();
-                index--;
-            }
-        }
-
-        return ((Ejemplar)aux.getInfo()).getListaPrestamos();
-    }
-
-    public Ejemplar getEjemplar(int index){
+    public T get(int index){
         Node<T> aux = head;
 
         if(index>=size || index < 0)
@@ -78,63 +42,30 @@ public class ListaSE<T> {
             }
         }
 
-        return (Ejemplar) aux.getInfo();
+        return aux.getInfo();
     }
 
-    public Prestamo getPrestamo(int index){
+    public boolean contains(T info){
+
+        boolean encontrado = false;
+
         Node<T> aux = head;
 
-        if(index>=size || index < 0)
-            return null;
-        else {
-            while(index > 0){
-                aux = aux.getNext();
-                index--;
-            }
-        }
+        while(aux!=null && !encontrado){
+            if(aux.getInfo().equals(info))
+                encontrado = true;
 
-        return (Prestamo) aux.getInfo();
-    }
-
-    @Override
-    public String toString() {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        Node<T> aux = head;
-        String tipoPublicacion = "publicaciones";
-        String output1, output2 = "";
-
-        if(aux!=null) {
-            if (aux.getInfo() instanceof Libro)
-                tipoPublicacion = "libros";
-            else if (aux.getInfo() instanceof Revista)
-                tipoPublicacion = "revistas";
-            else if(aux.getInfo() instanceof Ejemplar){
-                tipoPublicacion = "ejemplares";
-                while(aux!=null){
-                    if(((Ejemplar) aux.getInfo()).isDisponible())
-                        output2 += "\t\t" + aux.getInfo() + "  |  Disponile]\n";
-                    else
-                        output2 += "\t\t" + aux.getInfo() + "  |  Prestado]\n";
-                    aux = aux.getNext();
-                }
-            }
-            else if(aux.getInfo() instanceof Prestamo)
-                tipoPublicacion = "préstamos";
-            else if(aux.getInfo() instanceof Socio)
-                tipoPublicacion = "socios";
-            else
-                tipoPublicacion = "periódicos";
-        }
-
-        output1 = "Listado de " + tipoPublicacion + "{\n" +
-                "\tTotal de " + tipoPublicacion + ": " + size + "\n\n";
-
-        while(aux!=null){
-            output1 += aux.getInfo() + "\n";
             aux = aux.getNext();
         }
 
-        return output1 + output2 + "\t}\n";
+        return encontrado;
+    }
+
+
+
+    @Override
+    public String toString() {
+        return "Total: " + size + "\n\tValues: \n" + ((head == null) ? "\n}" : head.toString());
     }
 
     public static class Node<T> {
@@ -165,7 +96,7 @@ public class ListaSE<T> {
 
         @Override
         public String toString() {
-            return info.toString();
+            return "" + info + ((next != null) ? "\n" + next : "\n");
         }
     }
 

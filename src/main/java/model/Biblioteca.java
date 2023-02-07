@@ -57,39 +57,33 @@ public class Biblioteca {
     }
 
     public boolean prestarLibro(Libro libro, Socio socio){
-        boolean prestamoRealizado = false;
-
-        if(libro.getListaEjemplares().disponible(new Prestamo(socio, new Date(), null))){
-            socio.addNumPrestamos();
-            prestamoRealizado = true;
+        int i = 0;
+        boolean disponible = false;
+        while(i < libro.getListaEjemplares().getSize() && !disponible) {
+            if (libro.getListaEjemplares().get(i).isDisponible() && socio.getNumPrestamos() < 3){
+                disponible = true;
+                libro.getListaEjemplares().get(i).setDisponible(false);
+                libro.getListaEjemplares().get(i).addPrestamo(new Prestamo(socio, new Date(), null));
+                socio.addNumPrestamos();
+                socio.addEjemplar(libro.getListaEjemplares().get(i));
+            }
+            i++;
         }
-        return prestamoRealizado;
+        return disponible;
     }
 
     public boolean devolverLibro(Libro libro, Socio socio){
-        boolean devolucionRealizada = false;
-        int posicion = 0;
+        boolean encontrado = false;
+        int i = 0, k = 0;
 
-
-        while(posicion < libro.getListaEjemplares().getSize() && !devolucionRealizada){
-            if(libro.getListaEjemplares().getEjemplar(posicion).equals(socio.getListaEjemplares().getEjemplar(posicion))
-                && !libro.getListaEjemplares().getEjemplar(posicion).isDisponible()){
-                    //Sobreescribir método equals???
-                libro.getListaEjemplares().getEjemplar(posicion).setDisponible(true);
-                libro.getListaEjemplares().getEjemplar(posicion).getListaPrestamos().
-                        getPrestamo(libro.getListaEjemplares().getEjemplar(posicion).getListaPrestamos().getSize()-1).setDevuelto(new Date());
-//                socio.getListaEjemplares().get(posicion).setDisponible(true);
-                socio.removeNumPrestamo();
-                devolucionRealizada = true;
+            while (k < libro.getListaEjemplares().getSize() && !libro.getListaEjemplares().contains(socio.getListaEjemplares().get(k))){
+                if(!libro.getListaEjemplares().contains(socio.getListaEjemplares().get(k)))
+                    encontrado = true;
+                k++;
             }
-            posicion++;
-        }
 
-        return devolucionRealizada;
+        return encontrado;
     }
-
-//    public boolean altaPublicacion()
-
 
     @Override
     public String toString() {
