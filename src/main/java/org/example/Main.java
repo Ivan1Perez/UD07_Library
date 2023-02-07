@@ -2,6 +2,8 @@ package org.example;
 
 import model.*;
 
+import java.util.Date;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -16,10 +18,10 @@ public class Main {
         System.out.println(b1.getListaLibros());
 
         b1.addRevista(new Revista("La razón",98, Color.COLOR,
-                "El Bienestar", Tematica.SALUD, Periodicidad.SEMANAL));
+                "El Bienestar", Tematica.SALUD, Periodicidad.SEMANAL, new Date()));
 
         b1.addPeriodico(new Periodico("ABC", 143, Color.COLOR,
-                "El ABC", "22/06/2022"));
+                "El ABC", new Date()));
 
 
         Libro l2 = new Libro("La Editorial", 280, Color.BLANCOYNEGRO,
@@ -42,47 +44,43 @@ public class Main {
         System.out.println(b1);
         System.out.println();
 
-//        System.out.println(b1.prestarLibro(l1, s1));
-//        System.out.println(b1.prestarLibro(l1, s1));
-//        System.out.println(b1.prestarLibro(l1, s1));
-//        System.out.println(b1.prestarLibro(l1, s1));
-//        System.out.println(b1.prestarLibro(l1, s1));
-//        System.out.println(b1.prestarLibro(l1, s2));
+        System.out.println(b1.prestarLibro(l1, s1));
+        System.out.println(b1.prestarLibro(l1, s1));
+        System.out.println(b1.prestarLibro(l1, s1));
+        System.out.println(b1.prestarLibro(l1, s1));
+        System.out.println(b1.prestarLibro(l1, s1));
+        System.out.println(b1.prestarLibro(l1, s2));
 //        System.out.println(b1.devolverLibro(l1,s1));
 //        System.out.println(b1.devolverLibro(l1,s1));
 //        System.out.println(b1.prestarLibro(l1, s1));
 //        System.out.println(b1.prestarLibro(l1, s1));
 
+        System.out.println();
 
+        System.out.println(l1.printListaEjemplares());
+        System.out.println();
 
+        //Esta línea hace referencia al préstamo concreto de este concreto ejemplar.
+        System.out.println("'" + l1.getTitulo() + "'\n" + l1.getListaEjemplares().getEjemplar(0).getListaPrestamos().getPrestamo(0));
+        System.out.println(s1);
+        System.out.println(s2);
 
-//        System.out.println();
-//
-//        System.out.println(l1.printListaEjemplares());
-//        System.out.println();
-//
-//        //Esta línea hace referencia al préstamo concreto de este concreto ejemplar.
-//        System.out.println("'" + l1.getTitulo() + "'\n" + l1.getListaEjemplares().get(0).getListaPrestamos().get(0));
-//        System.out.println(s1);
-//        System.out.println(s2);
-//
-//        System.out.println();
-//        System.out.println();
-//        System.out.println(b1.devolverLibro(l1,s1));
-//        System.out.println(b1.devolverLibro(l1,s1));
-////        System.out.println(b1.prestarLibro(l1, s1));
+        System.out.println();
+        System.out.println();
+        System.out.println(b1.devolverLibro(l1,s1));
+        System.out.println(b1.devolverLibro(l1,s1));
 //        System.out.println(b1.prestarLibro(l1, s1));
-//
-//        System.out.println();
-//        System.out.println(l1.printListaEjemplares());
-//        System.out.println(s1.printListaEjemplares());
-//        System.out.println(s1);
-//        System.out.println();
-//        System.out.println(s2.printListaEjemplares());
-//        System.out.println();
-//
-//
-//
+        System.out.println(b1.prestarLibro(l1, s1));
+
+
+        System.out.println();
+        System.out.println(l1.printListaEjemplares());
+        System.out.println(s1.printListaEjemplares());
+        System.out.println(s1);
+        System.out.println();
+        System.out.println(s2.printListaEjemplares());
+        System.out.println();
+
 
 
     }

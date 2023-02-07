@@ -36,9 +36,9 @@ public class ListaSE<T> {
             return estaDisponible;
         else{
             while(aux!=null && !estaDisponible){
-                if(aux.getInfo().isDisponible() && prestamo.getSocio().getNumPrestamos() < 3){
-                    aux.getInfo().setDisponible(false);
-                    aux.getInfo().addPrestamo(prestamo);
+                if(((Ejemplar)aux.getInfo()).isDisponible() && prestamo.getSocio().getNumPrestamos() < 3){
+                    ((Ejemplar)aux.getInfo()).setDisponible(false);
+                    ((Ejemplar)aux.getInfo()).addPrestamo(prestamo);
                     prestamo.getSocio().addEjemplar((Ejemplar) aux.getInfo());
                     estaDisponible = true;
                 }
@@ -49,30 +49,75 @@ public class ListaSE<T> {
         return estaDisponible;
     }
 
+    public ListaSE<Prestamo> getListaPrestamos(int index){
+        Node<T> aux = head;
+
+        if(index>=size || index < 0)
+            return null;
+        else{
+            while(index > 0) {
+                aux = aux.getNext();
+                index--;
+            }
+        }
+
+        return ((Ejemplar)aux.getInfo()).getListaPrestamos();
+    }
+
+    public Ejemplar getEjemplar(int index){
+        Node<T> aux = head;
+
+        if(index>=size || index < 0)
+            return null;
+        else {
+            while(index > 0){
+                aux = aux.getNext();
+                index--;
+            }
+        }
+
+        return (Ejemplar) aux.getInfo();
+    }
+
+    public Prestamo getPrestamo(int index){
+        Node<T> aux = head;
+
+        if(index>=size || index < 0)
+            return null;
+        else {
+            while(index > 0){
+                aux = aux.getNext();
+                index--;
+            }
+        }
+
+        return (Prestamo) aux.getInfo();
+    }
+
     @Override
     public String toString() {
         Node<T> aux = head;
         String tipoPublicacion = "publicaciones";
         String output1, output2 = "";
 
-        if(head!=null) {
-            if (head.getInfo() instanceof Libro)
+        if(aux!=null) {
+            if (aux.getInfo() instanceof Libro)
                 tipoPublicacion = "libros";
-            else if (head.getInfo() instanceof Revista)
+            else if (aux.getInfo() instanceof Revista)
                 tipoPublicacion = "revistas";
-            else if(head.getInfo() instanceof Ejemplar){
+            else if(aux.getInfo() instanceof Ejemplar){
                 tipoPublicacion = "ejemplares";
                 while(aux!=null){
-                    if(aux.getInfo().isDisponible())
+                    if(((Ejemplar) aux.getInfo()).isDisponible())
                         output2 += "\t\t" + aux.getInfo() + "  |  Disponile]\n";
                     else
                         output2 += "\t\t" + aux.getInfo() + "  |  Prestado]\n";
                     aux = aux.getNext();
                 }
             }
-            else if(head.getInfo() instanceof Prestamo)
+            else if(aux.getInfo() instanceof Prestamo)
                 tipoPublicacion = "préstamos";
-            else if(head.getInfo() instanceof Socio)
+            else if(aux.getInfo() instanceof Socio)
                 tipoPublicacion = "socios";
             else
                 tipoPublicacion = "periódicos";
@@ -89,7 +134,7 @@ public class ListaSE<T> {
         return output1 + output2 + "\t}\n";
     }
 
-    class Node<T> {
+    public static class Node<T> {
 
         private T info;
         private Node<T> next;

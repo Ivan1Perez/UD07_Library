@@ -56,37 +56,39 @@ public class Biblioteca {
         return listaSocios;
     }
 
-//    public boolean prestarLibro(Libro libro, Socio socio){
-//        boolean prestamoRealizado = false;
-//
-//        if(libro.getListaEjemplares().disponible(new Prestamo(socio, new Date(), null))){
-//            socio.addNumPrestamos();
-//            prestamoRealizado = true;
-//        }
-//        return prestamoRealizado;
-//    }
-//
-//    public boolean devolverLibro(Libro libro, Socio socio){
-//        boolean devolucionRealizada = false;
-//        int posicion = 0;
-//
-//
-//        while(posicion < libro.getListaEjemplares().getSize() && !devolucionRealizada){
-//            if(libro.getListaEjemplares().get(posicion).equals(socio.getListaEjemplares().get(posicion))
-//                && !libro.getListaEjemplares().get(posicion).isDisponible()){
-//                    //Sobreescribir método equals???
-//                libro.getListaEjemplares().get(posicion).setDisponible(true);
-//                libro.getListaEjemplares().get(posicion).getListaPrestamos().
-//                        get(libro.getListaEjemplares().get(posicion).getListaPrestamos().getSize()-1).setDevuelto(new Date());
-////                socio.getListaEjemplares().get(posicion).setDisponible(true);
-//                socio.removeNumPrestamo();
-//                devolucionRealizada = true;
-//            }
-//            posicion++;
-//        }
-//
-//        return devolucionRealizada;
-//    }
+    public boolean prestarLibro(Libro libro, Socio socio){
+        boolean prestamoRealizado = false;
+
+        if(libro.getListaEjemplares().disponible(new Prestamo(socio, new Date(), null))){
+            socio.addNumPrestamos();
+            prestamoRealizado = true;
+        }
+        return prestamoRealizado;
+    }
+
+    public boolean devolverLibro(Libro libro, Socio socio){
+        boolean devolucionRealizada = false;
+        int posicion = 0;
+
+
+        while(posicion < libro.getListaEjemplares().getSize() && !devolucionRealizada){
+            if(libro.getListaEjemplares().getEjemplar(posicion).equals(socio.getListaEjemplares().getEjemplar(posicion))
+                && !libro.getListaEjemplares().getEjemplar(posicion).isDisponible()){
+                    //Sobreescribir método equals???
+                libro.getListaEjemplares().getEjemplar(posicion).setDisponible(true);
+                libro.getListaEjemplares().getEjemplar(posicion).getListaPrestamos().
+                        getPrestamo(libro.getListaEjemplares().getEjemplar(posicion).getListaPrestamos().getSize()-1).setDevuelto(new Date());
+//                socio.getListaEjemplares().get(posicion).setDisponible(true);
+                socio.removeNumPrestamo();
+                devolucionRealizada = true;
+            }
+            posicion++;
+        }
+
+        return devolucionRealizada;
+    }
+
+//    public boolean altaPublicacion()
 
 
     @Override

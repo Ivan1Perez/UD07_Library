@@ -5,6 +5,7 @@ public abstract class Publicacion {
     private String editorial;
     private int paginas;
     private Color color;
+    private boolean alta;
 
     public Publicacion(String editorial, int paginas, Color color) {
         this.editorial = editorial;
@@ -24,14 +25,11 @@ public abstract class Publicacion {
         return color;
     }
 
-//    public String getTitulo(){
-//        return ge
-//    }
+    public boolean isAlta() {
+        return alta;
+    }
 
-
-
-//    @Override
-//    public String toString() {
-//        return "Tipo de publicación: ";
-//    }
+    public void setAlta(boolean alta) {
+        this.alta = alta;
+    }
 }

@@ -6,7 +6,6 @@ public class Libro extends Publicacion{
     private String titulo;
     private int ejemplaresInicial;
     private String ISBN;
-    private Ejemplar ejemplar;
     protected ListaSE<Ejemplar> listaEjemplares = new ListaSE<>();
 
     public Libro(String editorial, int paginas, Color color, String autor, String titulo, String ISBN, int ejemplaresInicial) {
