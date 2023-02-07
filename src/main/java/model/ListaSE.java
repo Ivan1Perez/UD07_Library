@@ -1,5 +1,7 @@
 package model;
 
+import java.text.SimpleDateFormat;
+
 public class ListaSE<T> {
 
     private int size;
@@ -96,6 +98,7 @@ public class ListaSE<T> {
 
     @Override
     public String toString() {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Node<T> aux = head;
         String tipoPublicacion = "publicaciones";
         String output1, output2 = "";

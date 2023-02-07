@@ -62,6 +62,8 @@ public class Main {
 
         //Esta línea hace referencia al préstamo concreto de este concreto ejemplar.
         System.out.println("'" + l1.getTitulo() + "'\n" + l1.getListaEjemplares().getEjemplar(0).getListaPrestamos().getPrestamo(0));
+        System.out.println("'" + l1.getTitulo() + "'\n" + l1.getListaEjemplares().getEjemplar(0).getListaPrestamos());
+
         System.out.println(s1);
         System.out.println(s2);
 
