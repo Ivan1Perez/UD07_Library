@@ -29,6 +29,6 @@ public class Revista extends Publicacion{
                 "\t\tPeriodicidad: " + periodicidad + "\n" +
                 "\t\tPáginas: " + super.getPaginas() + "\n" +
                 "\t\tColor: " + super.getColor() + "\n" +
-                "\t\tFecha de publicación: " + formatter.format(fechaPublicacion);
+                "\t\tFecha de publicación: " + formatter.format(fechaPublicacion) + "\n";
     }
 }

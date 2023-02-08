@@ -29,22 +29,29 @@ public class Socio{
         return numPrestamos;
     }
 
-    public String printListaEjemplares(){
-        return "[Nombre: " + nombre + "   |   DNI: " + DNI + "]{\n" +
-                "\t" + listaEjemplares + "\n}";
-    }
+//    public String printListaEjemplares(){
+//        int i  = 0;
+//        String output = this + "{\n" + "\tTotal: " + listaEjemplares.getSize() + "\n";
+//
+//        while(i < listaEjemplares.getSize()){
+//            output += "\t" + listaEjemplares.get(i).toStringSocio() + "\n";
+//            i++;
+//        }
+//
+//        return output + "}";
+//    }
 
     public ListaSE<Ejemplar> getListaEjemplares() {
         return listaEjemplares;
     }
 
-    public int getEjemplaresPrestados() {
-        return listaEjemplares.getSize();
-    }
-
     @Override
     public String toString() {
-        return "\t[Nombre: " + nombre + "   |   DNI: " + DNI + "   |   Libros prestados: " + numPrestamos + "]";
+        return "\t\t[Nombre: " + nombre + "   |   DNI: " + DNI + "   |   Libros por devolver: " + numPrestamos + "]";
+    }
+
+    public String toStringPrestamos() {
+        return "\t[Nombre: " + nombre + "   |   DNI: " + DNI + "]";
     }
 
 }

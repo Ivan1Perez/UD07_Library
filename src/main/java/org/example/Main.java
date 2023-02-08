@@ -1,59 +1,75 @@
 package org.example;
 
 import model.*;
+import model.menu.Menu;
 
 import java.util.Date;
 
 public class Main {
-    public static void main(String[] args) {
+    public static <T> void main(String[] args) {
 
         Biblioteca b1 = new Biblioteca();
 
-        Libro l1 = new Libro("El Papel", 348, Color.BLANCOYNEGRO,
-                "Antonio Cabanas", "El camino de los dioses", "1122443399441"
-                , 5);
+//        System.out.println(b1.getListaLibros());
 
-        b1.addLibro(l1);
+        Menu m1 = new Menu(b1);
+        System.out.println(m1.getMensajeInicio());
+        for(String op : m1.opcionesIniciales()){
+            System.out.println(op);
+        }
 
-        System.out.println(b1.getListaLibros());
+        m1.selecOpcionesIniciales();
 
-        b1.addRevista(new Revista("La razón",98, Color.COLOR,
-                "El Bienestar", Tematica.SALUD, Periodicidad.SEMANAL, new Date()));
+        switch (m1.getOpcionSelecionada()){
+            case 1:
+                System.out.println(m1.getLibro());
+                break;
+            case 2:
+                System.out.println(m1.isPrestado());
+                break;
+            case 3:
+                System.out.println(m1.isDevuelto());
+                break;
+            case 4:
+                for(String op : m1.opcionesTotales()){
+                    System.out.println(op);
+                }
+                m1.selecOpcionesTotales();
+                System.out.println(m1.getListaSE());
+                break;
+            case 5:
+                System.out.println("Hasta luego!");
+        }
 
-        b1.addPeriodico(new Periodico("ABC", 143, Color.COLOR,
-                "El ABC", new Date()));
-
-
-        Libro l2 = new Libro("La Editorial", 280, Color.BLANCOYNEGRO,
-                "Miguel de Cervantes Saavedra", "Don Quijote de La Mancha", "4568125946321"
-                , 6);
-
-        b1.addLibro(l2);
-
-        Socio s1 = new Socio("Ivan Perez", "48711233H");
-        Socio s2 = new Socio("Juan Lopez", "85299963D");
-
-        b1.addSocio(s1);
-        b1.addSocio(s2);
-
-
-        System.out.println(l1.printListaEjemplares());
-//        System.out.println();
-        System.out.println();
+//        if(opcionSelecionada instanceof Libro){
+//            System.out.println(m1.getLibro());
+//        }
+//        else if (opcionSelecionada instanceof Boolean)
+//            System.out.println(m1.isPrestado());
 //
-//        System.out.println(b1);
-        System.out.println();
-
-        System.out.println(b1.prestarLibro(l1, s1));
-        System.out.println(b1.prestarLibro(l1, s1));
-        System.out.println(b1.prestarLibro(l1, s1));
-        System.out.println(b1.prestarLibro(l1, s1));
 
 
-        System.out.println();
-        System.out.println(l1.printListaEjemplares());
-
-        System.out.println(l1.getListaEjemplares().get(0).getListaPrestamos());
+//        System.out.println(l1.getListaEjemplares());
+////        System.out.println();
+//        System.out.println();
+////
+////        System.out.println(b1);
+//        System.out.println();
+//
+//        System.out.println(b1.prestarLibro(l1, s1));
+//        System.out.println(b1.prestarLibro(l1, s1));
+//        System.out.println(b1.prestarLibro(l2, s1));
+//        System.out.println(b1.prestarLibro(l1, s1));
+//        System.out.println(b1.devolverLibro(l1,s1));
+//        System.out.println(b1.prestarLibro(l1, s1));
+//
+//
+//        System.out.println();
+//        System.out.println(l1.getListaEjemplares());
+//        System.out.println(s1.getListaEjemplares());
+//        System.out.println(s1);
+//
+//        System.out.println(l1.getListaEjemplares().get(0).getListaPrestamos());
 
 
     }

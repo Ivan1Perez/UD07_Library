@@ -22,9 +22,9 @@ public class Libro extends Publicacion{
         return titulo;
     }
 
-    public String printListaEjemplares(){
-        return "Libro '" + titulo + "'{\n\t" + listaEjemplares + "}";
-    }
+//    public String printListaEjemplares(){
+//        return "Libro '" + titulo + "'{\n\t" + listaEjemplares + "}";
+//    }
 
     public ListaSE<Ejemplar> getListaEjemplares(){
         return listaEjemplares;

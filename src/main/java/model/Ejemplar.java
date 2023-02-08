@@ -46,8 +46,9 @@ public class Ejemplar {
     public String toString() {
 
         if(isDisponible())
-            return "\t\t[Código: " + codigo + "  |  ISBN: " + libro.getISBN() + "  |  Disponible]";
+            return "\t\t[Código: " + codigo + "  |  ISBN: " + libro.getISBN() + "]";// + "  |  Disponible]";
 
-        return "\t\t[Código: " + codigo + "  |  ISBN: " + libro.getISBN() + "  |  Prestado]";
+        return "\t\t[Código: " + codigo + "  |  ISBN: " + libro.getISBN() + "]";// + "  |  Prestado]";
     }
+
 }
