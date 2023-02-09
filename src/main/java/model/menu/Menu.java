@@ -4,7 +4,6 @@ import model.Biblioteca;
 import model.Entrada;
 import model.Libro;
 import model.ListaSE;
-import org.w3c.dom.ls.LSOutput;
 
 public class Menu {
 
@@ -26,38 +25,28 @@ public class Menu {
         return mensajeInicio;
     }
 
-    public String[] opcionesIniciales(){
+    public String[] getOpcionesIniciales(){
         return opciones.opcionesIniciales();
     }
 
-    public String[] opcionesTotales() {
-        return opciones.opcionesTotales();
+    public String[] getMasOpciones() {
+        return opciones.masOpciones();
     }
 
-    public <T> T selecOpcionesIniciales() {
-        T result = null;
+    public void selecOpcionesPrincipales() {
 
-        switch (entrada.selecOpcionesIniciales()){
+        switch (entrada.checkOpcionesPrincipales()){
             case 1:
                 opcionSelecionada = 1;
-                this.libro = biblioteca.buscarLibro(entrada.texto());
-                result = (T) libro;
+                this.libro = biblioteca.buscarLibro(entrada.titulo());
                 break;
             case 2:
                 opcionSelecionada = 2;
-                this.prestado = biblioteca.prestarLibro(biblioteca.getListaLibros().get(0), biblioteca.getListaSocios().get(0));
-                if(prestado)
-                    result = (T) Boolean.TRUE;
-                else
-                    result = (T) Boolean.FALSE;
+                this.prestado = biblioteca.prestarLibro();
                 break;
             case 3:
                 opcionSelecionada = 3;
-                this.devuelto = biblioteca.devolverLibro(biblioteca.getListaLibros().get(0), biblioteca.getListaSocios().get(0));
-                if(devuelto)
-                    result = (T) Boolean.TRUE;
-                else
-                    result = (T) Boolean.FALSE;
+                this.devuelto = biblioteca.devolverLibro(entrada.titulo(), entrada.DNI());
                 break;
             case 4:
                 opcionSelecionada = 4;
@@ -66,13 +55,11 @@ public class Menu {
                 opcionSelecionada = 5;
                 break;
         }
-
-        return result;
     }
 
-    public void selecOpcionesTotales() {
+    public void selecMasOpciones() {
 
-        switch (entrada.selecOpcionesTotales()){
+        switch (entrada.checkMasOpciones()){
             case 1:
                 this.listaSE = biblioteca.getListaLibros();
                 break;

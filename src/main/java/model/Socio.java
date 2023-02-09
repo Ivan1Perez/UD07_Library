@@ -13,6 +13,10 @@ public class Socio{
         listaEjemplares = new ListaSE<>();
     }
 
+    public String getDNI() {
+        return DNI;
+    }
+
     public void addEjemplar(Ejemplar ejemplar){
         listaEjemplares.add(ejemplar);
     }

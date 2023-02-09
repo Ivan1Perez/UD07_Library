@@ -3,50 +3,47 @@ package org.example;
 import model.*;
 import model.menu.Menu;
 
-import java.util.Date;
-
 public class Main {
-    public static <T> void main(String[] args) {
+    public static void main(String[] args) {
 
         Biblioteca b1 = new Biblioteca();
 
 //        System.out.println(b1.getListaLibros());
+//        System.out.println(b1.prestarLibro("don", "48711233H"));
+//        System.out.println(b1.prestarLibro("don", "48711233H"));
 
         Menu m1 = new Menu(b1);
         System.out.println(m1.getMensajeInicio());
-        for(String op : m1.opcionesIniciales()){
+        for(String op : m1.getOpcionesIniciales()){
             System.out.println(op);
         }
 
-        m1.selecOpcionesIniciales();
+        m1.selecOpcionesPrincipales();
 
         switch (m1.getOpcionSelecionada()){
             case 1:
                 System.out.println(m1.getLibro());
+                System.out.println(b1.getConfirmacion());
                 break;
             case 2:
                 System.out.println(m1.isPrestado());
+                System.out.println(b1.getConfirmacion());
                 break;
             case 3:
                 System.out.println(m1.isDevuelto());
+                System.out.println(b1.getConfirmacion());
                 break;
             case 4:
-                for(String op : m1.opcionesTotales()){
+                for(String op : m1.getMasOpciones()){
                     System.out.println(op);
                 }
-                m1.selecOpcionesTotales();
+                m1.selecMasOpciones();
                 System.out.println(m1.getListaSE());
                 break;
             case 5:
                 System.out.println("Hasta luego!");
         }
 
-//        if(opcionSelecionada instanceof Libro){
-//            System.out.println(m1.getLibro());
-//        }
-//        else if (opcionSelecionada instanceof Boolean)
-//            System.out.println(m1.isPrestado());
-//
 
 
 //        System.out.println(l1.getListaEjemplares());

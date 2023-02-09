@@ -1,7 +1,5 @@
 package model;
 
-import model.menu.Opciones;
-
 import java.util.Date;
 
 public class Biblioteca {
@@ -10,6 +8,8 @@ public class Biblioteca {
     private ListaSE<Revista> listaRevistas;
     private ListaSE<Periodico> listaPeriodicos;
     private ListaSE<Socio> listaSocios;
+    private String confirmacion;
+    private Entrada entrada = new Entrada();
 
     public Biblioteca() {
         listaLibros = new ListaSE<>();
@@ -55,6 +55,10 @@ public class Biblioteca {
         listaSocios.add(socio);
     }
 
+    public String getConfirmacion() {
+        return confirmacion;
+    }
+
     public ListaSE<Libro> getListaLibros(){
         return listaLibros;
     }
@@ -77,44 +81,110 @@ public class Biblioteca {
         Libro l = null;
 
         while(i < listaLibros.getSize() && !encontrado){
-            if(titulo.equalsIgnoreCase(listaLibros.get(i).getTitulo())){
+            if(listaLibros.get(i).getTitulo().toLowerCase().contains(titulo.toLowerCase())){
                 encontrado = true;
                 l = listaLibros.get(i);
             }
             i++;
         }
+
+        if(!encontrado)
+            confirmacion = Confirmacion.TITLE_NOTFOUND.getRespuesta();
+        else confirmacion = "";
+
         return l;
     }
 
-    public boolean prestarLibro(Libro libro, Socio socio){
+    public Socio buscarSocio(String DNI){
         int i = 0;
-        boolean disponible = false;
-        while(i < libro.getListaEjemplares().getSize() && !disponible) {
-            if (libro.getListaEjemplares().get(i).isDisponible() && socio.getNumPrestamos() < 3){
-                disponible = true;
-                libro.getListaEjemplares().get(i).setDisponible(false);
-                libro.getListaEjemplares().get(i).addPrestamo(new Prestamo(socio, new Date(), null));
-                socio.addNumPrestamos();
-                socio.addEjemplar(libro.getListaEjemplares().get(i));
+        boolean encontrado = false;
+        Socio s = null;
+
+        while(i < listaSocios.getSize() && !encontrado){
+            if(listaSocios.get(i).getDNI().equalsIgnoreCase(DNI.toLowerCase())){
+                encontrado = true;
+                s = listaSocios.get(i);
             }
             i++;
         }
-        return disponible;
+
+        if(!encontrado)
+            confirmacion = Confirmacion.DNI_NOTFOUND.getRespuesta();
+        else confirmacion = "";
+
+        return s;
     }
 
-    public boolean devolverLibro(Libro libro, Socio socio){
+    public boolean prestarLibro() {
+        int i = 0;
+        boolean prestamoCorrecto = false;
+        boolean libroCorrecto = false;
+
+        Libro l;
+        Socio s;
+
+        do {
+            l = buscarLibro(entrada.titulo());
+            if (entrada.libroBuscado(l))
+                libroCorrecto = true;
+        } while (!libroCorrecto);
+
+        do {
+            s = buscarSocio(entrada.DNI());
+            if(s==null){
+                if(entrada.opcionesDNI()==2){
+                    addSocio(entrada.crearSocio(listaSocios));
+                }
+            }
+
+        }while(s==null);
+
+        while (i < l.getListaEjemplares().getSize() && !prestamoCorrecto) {
+            if (l.getListaEjemplares().get(i).isDisponible() && s.getNumPrestamos() < 3) {
+                prestamoCorrecto = true;
+                l.getListaEjemplares().get(i).setDisponible(false);
+                l.getListaEjemplares().get(i).addPrestamo(new Prestamo(s, new Date(), null));
+                s.addNumPrestamos();
+                s.addEjemplar(l.getListaEjemplares().get(i));
+            }
+            i++;
+        }
+
+        if (prestamoCorrecto)
+            confirmacion = Confirmacion.LOAN_DONE.getRespuesta();
+        else confirmacion = Confirmacion.LOAN_NOTDONE.getRespuesta();
+
+        return prestamoCorrecto;
+    }
+
+    public boolean devolverLibro(String titulo, String DNI){
         boolean encontrado = false;
         int i = 0;
 
-        if(socio.getListaEjemplares().getSize() > 0)
-            while (i < libro.getListaEjemplares().getSize() && !encontrado){
-                if(libro.getListaEjemplares().contains(socio.getListaEjemplares().get(i))){
-                    encontrado = true;
-                    socio.getListaEjemplares().get(i).setDisponible(true);
-                    socio.removeNumPrestamo();
+        Libro l = buscarLibro(titulo);
+        Socio s = buscarSocio(DNI);
+
+        if(l==null)
+            confirmacion = Confirmacion.TITLE_NOTFOUND.getRespuesta();
+        else if(s==null)
+            confirmacion = Confirmacion.DNI_NOTFOUND.getRespuesta();
+        else{
+            if(s.getListaEjemplares().getSize() > 0)
+                while (i < l.getListaEjemplares().getSize() && !encontrado){
+                    if(l.getListaEjemplares().contains(s.getListaEjemplares().get(i))){
+                        encontrado = true;
+                        s.getListaEjemplares().get(i).setDisponible(true);
+                        s.removeNumPrestamo();
+                    }
+                    i++;
                 }
-                i++;
-            }
+        }
+
+        if(encontrado)
+            confirmacion = Confirmacion.RETURN_DONE.getRespuesta();
+        else if(l != null && s != null) confirmacion = Confirmacion.RETURN_NOTDONE.getRespuesta();
+
+
 
         return encontrado;
     }
