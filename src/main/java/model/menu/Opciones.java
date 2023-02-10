@@ -5,7 +5,7 @@ public class Opciones {
     public Opciones(){
     }
 
-    public String[] opcionesIniciales(){
+    public static String[] opcionesIniciales(){
         return new String[]{
                 ("[1] Buscar un libro. Pulse '1'."),
                 ("[2] Obtener un libro. Pulse '2'."),
@@ -15,17 +15,25 @@ public class Opciones {
         };
     }
 
-    public String[] masOpciones() {
+    public static String[] masOpciones() {
         return new String[]{
                 ("[1] Ver listado de libros. Pulse '1'."),
                 ("[2] Ver listado de Revistas. Pulse '2'."),
                 ("[3] Ver listado de Periódicos. Pulse '3'."),
                 ("[4] Ver listado de socios. Pulse '4'."),
-                ("[5] Buscar un libro. Pulse '5'."),
-                ("[6] Obtener un libro. Pulse '6'."),
-                ("[7] Devolver un libro. Pulse '7'."),
-                ("[8] Ver todas las opciones. Pulse '8'."),
-                ("[9] Salir. Pulse '9'.")
+                ("[5] Comprobar los préstamos de un ejemplar. Pulse '5'."),
+                ("[6] Comprobar los préstmaos de un socio. Pulse '6'."),
+                ("[7] Ver los ejemplares disponibles de un libro. Pulse '7'."),
+                ("[8] Dar de alta/baja una publicación. Pulse '8'."),
+                ("[9] Dar de alta/baja/modificar un socio. Pulse '9'."),
+                ("[10] Volver. Pulse '10'.")
+        };
+    }
+
+    public static String[] opcionesRegreso() {
+        return new String[]{
+                ("[1] Volver al menú principal → Pulse '1'"),
+                ("[2] Salir → Pulse '2'")
         };
     }
 

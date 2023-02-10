@@ -2,47 +2,88 @@ package org.example;
 
 import model.*;
 import model.menu.Menu;
+import model.menu.Opciones;
 
 public class Main {
     public static void main(String[] args) {
-
+        Entrada entrada = new Entrada();
         Biblioteca b1 = new Biblioteca();
+        boolean salir = false;
 
 //        System.out.println(b1.getListaLibros());
-//        System.out.println(b1.prestarLibro("don", "48711233H"));
-//        System.out.println(b1.prestarLibro("don", "48711233H"));
 
         Menu m1 = new Menu(b1);
         System.out.println(m1.getMensajeInicio());
-        for(String op : m1.getOpcionesIniciales()){
-            System.out.println(op);
-        }
 
-        m1.selecOpcionesPrincipales();
+        do {
+            for(String op : Opciones.opcionesIniciales()){
+                System.out.println(op);
+            }
 
-        switch (m1.getOpcionSelecionada()){
-            case 1:
-                System.out.println(m1.getLibro());
-                System.out.println(b1.getConfirmacion());
-                break;
-            case 2:
-                System.out.println(m1.isPrestado());
-                System.out.println(b1.getConfirmacion());
-                break;
-            case 3:
-                System.out.println(m1.isDevuelto());
-                System.out.println(b1.getConfirmacion());
-                break;
-            case 4:
-                for(String op : m1.getMasOpciones()){
-                    System.out.println(op);
-                }
+            m1.selecOpcionesPrincipales();
+
+            switch (m1.getOpcionSelecionada()) {
+                case 1:
+                    for (String op : Opciones.opcionesRegreso())
+                        System.out.println(op);
+                    if(entrada.opciones1_2()==2)
+                        salir = true;
+                    break;
+                case 2:
+                    System.out.println(m1.isPrestado());
+                    System.out.println(b1.getConfirmacion());
+                    for (String op : Opciones.opcionesRegreso())
+                        System.out.println(op);
+                    if(entrada.opciones1_2()==2)
+                        salir = true;
+                    break;
+                case 3:
+                    System.out.println(m1.isDevuelto());
+                    System.out.println(b1.getConfirmacion());
+                    for (String op : Opciones.opcionesRegreso())
+                        System.out.println(op);
+                    if(entrada.opciones1_2()==2)
+                        salir = true;
+                    break;
+                case 4:
+                    for (String op : Opciones.masOpciones()) {
+                        System.out.println(op);
+                    }
+                    break;
+                case 5:
+                    salir = true;
+            }
+
+            //INICIO menú 'Ver más opciones' (case 4)
+
+            if (m1.getOpcionSelecionada() == 4) {
                 m1.selecMasOpciones();
-                System.out.println(m1.getListaSE());
-                break;
-            case 5:
+                switch (m1.getOpcionSelecionada()) {
+                    case 1, 2, 3, 4:
+                        System.out.println(m1.getListaSE());
+                        for (String op : Opciones.opcionesRegreso())
+                            System.out.println(op);
+                        if(entrada.opciones1_2()==2)
+                            salir = true;
+                        break;
+
+                    case 5:
+                        System.out.println(b1.getListaPrestamos());
+                        for (String op : Opciones.opcionesRegreso())
+                            System.out.println(op);
+                        if(entrada.opciones1_2()==2)
+                            salir = true;
+                        break;
+
+                }
+            }
+
+            //FIN menú 'Ver más opciones' (case 4)
+
+            if(salir)
                 System.out.println("Hasta luego!");
-        }
+
+        }while(!salir);
 
 
 

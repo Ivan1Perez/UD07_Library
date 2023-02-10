@@ -38,14 +38,14 @@ public class Entrada {
         while(!correcto){
             if(sc.hasNextInt()) {
                 opcion = sc.nextInt();
-                if(opcion > 0 && opcion < 5)
+                if(opcion > 0 && opcion < 11)
                     correcto = true;
                 else {
-                    System.out.println("Error. Has de introducir uno de estos números → [1,2,3 o 4]");
+                    System.out.println("Error. Has de introducir un número mayor que 0 y menor que 11");
                     sc.nextLine();
                 }
             }else {
-                System.out.println("Error. Has de introducir uno de estos números → [1,2,3 o 4]");
+                System.out.println("Error. Has de introducir un número mayor que 0 y menor que 11");
                 sc.nextLine();
             }
         }
@@ -77,25 +77,29 @@ public class Entrada {
                 correcto = true;
         }while(!correcto);
 
-
-
         return DNI;
     }
 
-    public int opcionesDNI(){
+    public int opciones1_2(){
         Scanner sc = new Scanner(System.in);
-        int respuesta;
-        boolean respCorrecta = false;
+        int respuesta = 0;
+        boolean correcto = false;
 
-        System.out.println(Confirmacion.DNI_NOTFOUND.getRespuesta());
+        while(!correcto){
+            if(sc.hasNextInt()) {
+                respuesta = sc.nextInt();
+                if(respuesta > 0 && respuesta < 3)
+                    correcto = true;
+                else {
+                    System.out.println("Error. Has de introducir un '1' o un '2'");
+                    sc.nextLine();
+                }
+            }else {
+                System.out.println("Error. Has de introducir un '1' o un '2'");
+                sc.nextLine();
+            }
+        }
 
-        do{
-            respuesta = sc.nextInt();
-            if(respuesta==1 || respuesta==2)
-                respCorrecta = true;
-            else
-                System.out.println("Error. Debes introducir [1] o [2]");
-        }while(!respCorrecta);
 
         return respuesta;
     }
@@ -116,7 +120,7 @@ public class Entrada {
         }while(i < listaSocios.getSize());
 
         System.out.println("Socio creado!");
-        System.out.println("Vuelva a introducir su DNI para realizar el prestamo.");
+        System.out.println("Vuelva a introducir su DNI para realizar el préstamo/devolución.");
 
         return new Socio(nombre, DNI);
     }
@@ -163,4 +167,70 @@ public class Entrada {
         return nombre;
     }
 
+    public void tituloNoCoincide(){
+        Scanner sc = new Scanner(System.in);
+        int respuesta;
+        boolean correcto = false;
+
+        System.out.println(Confirmacion.TITLE_NOTFOUND.getRespuesta());
+
+        while(!correcto){
+            if(sc.hasNextInt()) {
+                respuesta = sc.nextInt();
+                if(respuesta > 0 && respuesta < 3) {
+                    correcto = true;
+                }
+                else {
+                    System.out.println("Error. Has de introducir un '1' o un '2'");
+                    sc.nextLine();
+                }
+            }else {
+                System.out.println("Error. Has de introducir un '1' o un '2'");
+                sc.nextLine();
+            }
+        }
+    }
+
+    public int DNI_NoEncontrado() {
+        Scanner sc = new Scanner(System.in);
+        int respuesta = 0;
+        boolean correcto = false;
+
+        System.out.println(Confirmacion.DNI_NOTFOUND.getRespuesta());
+
+        while (!correcto) {
+            if (sc.hasNextInt()) {
+                respuesta = sc.nextInt();
+                if (respuesta > 0 && respuesta < 3)
+                    correcto = true;
+                else {
+                    System.out.println("Error. Has de introducir un '1' o un '2'");
+                    sc.nextLine();
+                }
+            } else {
+                System.out.println("Error. Has de introducir un '1' o un '2'");
+                sc.nextLine();
+            }
+        }
+        return respuesta;
+    }
+
+    public int checkCodEjemplar(){
+        Scanner sc = new Scanner(System.in);
+        int num = 0;
+        boolean correcto = false;
+
+        do {
+            System.out.println("Introduzca el código del ejemplar:");
+            if(!sc.hasNextInt())
+                System.out.println("Error. Has de introducir un número.");
+            else{
+                num = sc.nextInt();
+                correcto = true;
+            }
+        }while(!correcto);
+
+
+        return num;
+    }
 }

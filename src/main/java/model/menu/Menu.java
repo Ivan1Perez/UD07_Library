@@ -25,20 +25,12 @@ public class Menu {
         return mensajeInicio;
     }
 
-    public String[] getOpcionesIniciales(){
-        return opciones.opcionesIniciales();
-    }
-
-    public String[] getMasOpciones() {
-        return opciones.masOpciones();
-    }
-
     public void selecOpcionesPrincipales() {
 
         switch (entrada.checkOpcionesPrincipales()){
             case 1:
                 opcionSelecionada = 1;
-                this.libro = biblioteca.buscarLibro(entrada.titulo());
+                this.libro = biblioteca.checkLibro();
                 break;
             case 2:
                 opcionSelecionada = 2;
@@ -46,7 +38,7 @@ public class Menu {
                 break;
             case 3:
                 opcionSelecionada = 3;
-                this.devuelto = biblioteca.devolverLibro(entrada.titulo(), entrada.DNI());
+                this.devuelto = biblioteca.devolverLibro();
                 break;
             case 4:
                 opcionSelecionada = 4;
@@ -61,17 +53,23 @@ public class Menu {
 
         switch (entrada.checkMasOpciones()){
             case 1:
+                opcionSelecionada = 1;
                 this.listaSE = biblioteca.getListaLibros();
                 break;
             case 2:
+                opcionSelecionada = 2;
                 this.listaSE = biblioteca.getListaRevistas();
                 break;
             case 3:
+                opcionSelecionada = 3;
                 this.listaSE = biblioteca.getListaPeriodicos();
                 break;
             case 4:
+                opcionSelecionada = 4;
                 this.listaSE = biblioteca.getListaSocios();
                 break;
+            case 5:
+                opcionSelecionada = 5;
         }
     }
 

@@ -8,7 +8,7 @@ public class Biblioteca {
     private ListaSE<Revista> listaRevistas;
     private ListaSE<Periodico> listaPeriodicos;
     private ListaSE<Socio> listaSocios;
-    private String confirmacion;
+    private String confirmacion = "";
     private Entrada entrada = new Entrada();
 
     public Biblioteca() {
@@ -26,6 +26,18 @@ public class Biblioteca {
                 "Miguel de Cervantes Saavedra", "Don Quijote de La Mancha", "4568125946321"
                 , 6);
         addLibro(l2);
+
+        addLibro(new Libro("La Editorial", 350, Color.BLANCOYNEGRO,
+                "Jane Austen", "Orgullo y Prejuicio", "8521457956321"
+                , 7));
+
+        addLibro(new Libro("Mesón", 430, Color.BLANCOYNEGRO,
+                "Fyodor Dostoevsky", "Crimen y Castigo", "6541254896321"
+                , 9));
+
+        addLibro(new Libro("Burgos Editores", 240, Color.BLANCOYNEGRO,
+                "Mark Twain", "Las Aventuras de Tom Sawyer", "1235465478921"
+                , 5));
 
         addRevista(new Revista("La razón",98, Color.COLOR,
                 "El Bienestar", Tematica.SALUD, Periodicidad.SEMANAL, new Date()));
@@ -75,42 +87,100 @@ public class Biblioteca {
         return listaSocios;
     }
 
-    public Libro buscarLibro(String titulo){
-        int i = 0;
+    public ListaSE<Prestamo> getListaPrestamos(){
+        ListaSE<Prestamo> listaPrestamos = null;
+        Libro l = checkLibro();
+        int i = 0, codEjemplar;
+
+        do{
+            codEjemplar = entrada.checkCodEjemplar();
+
+            if(codEjemplar <= l.getListaEjemplares().getSize()){
+                while(i < l.getListaEjemplares().getSize() && listaPrestamos==null) {
+                    if (codEjemplar == l.getListaEjemplares().get(i).getCodigo()) {
+                        listaPrestamos = l.getListaEjemplares().get(i).getListaPrestamos();
+                    }
+                    i++;
+                }
+            }
+            if(listaPrestamos==null)
+                i = 0;
+        }while(listaPrestamos==null);
+
+        return listaPrestamos;
+    }
+
+    public Libro buscarLibro(){
+        int i;
         boolean encontrado = false;
+        String titulo;
         Libro l = null;
 
-        while(i < listaLibros.getSize() && !encontrado){
-            if(listaLibros.get(i).getTitulo().toLowerCase().contains(titulo.toLowerCase())){
-                encontrado = true;
-                l = listaLibros.get(i);
+        do {
+            i = 0;
+            titulo = entrada.titulo();
+            while (i < listaLibros.getSize() && !encontrado) {
+                if (listaLibros.get(i).getTitulo().toLowerCase().contains(titulo.toLowerCase())) {
+                    encontrado = true;
+                    l = listaLibros.get(i);
+                }
+                i++;
             }
-            i++;
-        }
 
-        if(!encontrado)
-            confirmacion = Confirmacion.TITLE_NOTFOUND.getRespuesta();
-        else confirmacion = "";
+            if (!encontrado)
+                entrada.tituloNoCoincide();
+        }while(!encontrado);
 
         return l;
     }
 
-    public Socio buscarSocio(String DNI){
-        int i = 0;
+    public Socio buscarSocio(){
+        int i;
         boolean encontrado = false;
         Socio s = null;
+        String DNI;
 
-        while(i < listaSocios.getSize() && !encontrado){
-            if(listaSocios.get(i).getDNI().equalsIgnoreCase(DNI.toLowerCase())){
-                encontrado = true;
-                s = listaSocios.get(i);
+        do {
+            DNI = entrada.DNI();
+            i = 0;
+            while (i < listaSocios.getSize() && !encontrado) {
+                if (listaSocios.get(i).getDNI().equalsIgnoreCase(DNI.toLowerCase())) {
+                    encontrado = true;
+                    s = listaSocios.get(i);
+                }
+                i++;
             }
-            i++;
-        }
+            if (!encontrado)
+                if(entrada.DNI_NoEncontrado()==2)
+                    encontrado = true;
+        }while(!encontrado);
 
-        if(!encontrado)
-            confirmacion = Confirmacion.DNI_NOTFOUND.getRespuesta();
-        else confirmacion = "";
+        return s;
+    }
+
+    public Libro checkLibro(){
+        boolean libroCorrecto = false;
+        Libro l;
+
+        do {
+            l = buscarLibro();
+            if(l==null)
+                entrada.tituloNoCoincide();
+            else if (entrada.libroBuscado(l))
+                libroCorrecto = true;
+        } while (!libroCorrecto);
+
+        return l;
+    }
+
+    public Socio checkSocio(){
+        Socio s;
+
+        do {
+            s = buscarSocio();
+            if(s==null)
+                addSocio(entrada.crearSocio(listaSocios));
+        }while(s==null);
 
         return s;
     }
@@ -118,26 +188,8 @@ public class Biblioteca {
     public boolean prestarLibro() {
         int i = 0;
         boolean prestamoCorrecto = false;
-        boolean libroCorrecto = false;
-
-        Libro l;
-        Socio s;
-
-        do {
-            l = buscarLibro(entrada.titulo());
-            if (entrada.libroBuscado(l))
-                libroCorrecto = true;
-        } while (!libroCorrecto);
-
-        do {
-            s = buscarSocio(entrada.DNI());
-            if(s==null){
-                if(entrada.opcionesDNI()==2){
-                    addSocio(entrada.crearSocio(listaSocios));
-                }
-            }
-
-        }while(s==null);
+        Libro l = checkLibro();
+        Socio s = checkSocio();
 
         while (i < l.getListaEjemplares().getSize() && !prestamoCorrecto) {
             if (l.getListaEjemplares().get(i).isDisponible() && s.getNumPrestamos() < 3) {
@@ -157,12 +209,12 @@ public class Biblioteca {
         return prestamoCorrecto;
     }
 
-    public boolean devolverLibro(String titulo, String DNI){
+    public boolean devolverLibro(){
         boolean encontrado = false;
         int i = 0;
 
-        Libro l = buscarLibro(titulo);
-        Socio s = buscarSocio(DNI);
+        Libro l = checkLibro();
+        Socio s = checkSocio();
 
         if(l==null)
             confirmacion = Confirmacion.TITLE_NOTFOUND.getRespuesta();
