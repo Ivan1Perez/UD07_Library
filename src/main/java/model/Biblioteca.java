@@ -212,6 +212,7 @@ public class Biblioteca {
     public boolean devolverLibro(){
         boolean encontrado = false;
         int i = 0;
+        int tamañoLista;
 
         Libro l = checkLibro();
         Socio s = checkSocio();
@@ -226,6 +227,12 @@ public class Biblioteca {
                     if(l.getListaEjemplares().contains(s.getListaEjemplares().get(i))){
                         encontrado = true;
                         s.getListaEjemplares().get(i).setDisponible(true);
+                        tamañoLista = s.getListaEjemplares().get(i).getListaPrestamos().getSize();
+//                        ----------------------------------------------------------------------
+//                        ESTA LINEA NO ES CORRECTA
+//                        SE HA DE COMPROBAR QUE EL PRESTAMO DEL EJEMPLAR ES EL MISMO QUE EL PRESTAMO A DEVOLVER
+                        s.getListaEjemplares().get(i).getListaPrestamos().get(tamañoLista-1).setDevuelto(new Date());
+//                        ----------------------------------------------------------------------
                         s.removeNumPrestamo();
                     }
                     i++;
