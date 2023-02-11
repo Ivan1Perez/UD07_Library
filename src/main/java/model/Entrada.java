@@ -136,7 +136,7 @@ public class Entrada {
         System.out.println("No → Pulsa [N]");
 
         do{
-            respuesta = sc.next();
+            respuesta = sc.nextLine();
             if(respuesta.equalsIgnoreCase("N") || respuesta.equalsIgnoreCase("S")){
                 respCorrecta = true;
             }
@@ -215,22 +215,24 @@ public class Entrada {
         return respuesta;
     }
 
-    public int checkCodEjemplar(){
+    public int checkCodEjemplar() {
         Scanner sc = new Scanner(System.in);
         int num = 0;
         boolean correcto = false;
 
-        do {
-            System.out.println("Introduzca el código del ejemplar:");
-            if(!sc.hasNextInt())
-                System.out.println("Error. Has de introducir un número.");
-            else{
+        while (!correcto) {
+            System.out.println("Introduzca el código del ejemplar:\n" +
+                    "Nota: los códigos van desde el 1 al número total de ejemplares");
+            if (sc.hasNextInt()) {
                 num = sc.nextInt();
                 correcto = true;
+            } else {
+                System.out.println("Error. Has de introducir un número.");
+                sc.nextLine();
             }
-        }while(!correcto);
-
+        }
 
         return num;
     }
+
 }

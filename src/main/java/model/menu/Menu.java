@@ -70,6 +70,10 @@ public class Menu {
                 break;
             case 5:
                 opcionSelecionada = 5;
+                break;
+            case 6:
+                opcionSelecionada = 6;
+                break;
         }
     }
 

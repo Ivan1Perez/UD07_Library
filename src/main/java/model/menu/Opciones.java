@@ -7,6 +7,7 @@ public class Opciones {
 
     public static String[] opcionesIniciales(){
         return new String[]{
+                ("Nota: Si no sabe que libro buscar vaya a 'Ver más opciones' y pulse 'Ver listado de libros'."),
                 ("[1] Buscar un libro. Pulse '1'."),
                 ("[2] Obtener un libro. Pulse '2'."),
                 ("[3] Devolver un libro. Pulse '3'."),
@@ -22,11 +23,10 @@ public class Opciones {
                 ("[3] Ver listado de Periódicos. Pulse '3'."),
                 ("[4] Ver listado de socios. Pulse '4'."),
                 ("[5] Comprobar los préstamos de un ejemplar. Pulse '5'."),
-                ("[6] Comprobar los préstmaos de un socio. Pulse '6'."),
-                ("[7] Ver los ejemplares disponibles de un libro. Pulse '7'."),
-                ("[8] Dar de alta/baja una publicación. Pulse '8'."),
-                ("[9] Dar de alta/baja/modificar un socio. Pulse '9'."),
-                ("[10] Volver. Pulse '10'.")
+                ("[6] Comprobar los préstamos de un socio. Pulse '6'."),
+                ("[7] Dar de alta/baja una publicación. Pulse '7'."),
+                ("[8] Dar de alta/baja/modificar un socio. Pulse '8'."),
+                ("[9] Volver. Pulse '9'.")
         };
     }
 

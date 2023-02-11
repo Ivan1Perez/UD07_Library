@@ -7,6 +7,9 @@ public abstract class Publicacion {
     private Color color;
     private boolean alta;
 
+    public Publicacion() {
+    }
+
     public Publicacion(String editorial, int paginas, Color color) {
         this.editorial = editorial;
         this.paginas = paginas;

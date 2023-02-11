@@ -9,9 +9,13 @@ public enum Confirmacion {
             "[1] Introducir título de nuevo → Pulse '1'\n" +
             "[2] Salir → Pulse '2'"),
     LOAN_DONE("Préstamo realizado con éxito."),
-    LOAN_NOTDONE("No se ha podido realizar el préstamo"),
+    LOAN_NOTDONE1("No se pudo realizar el préstamo.\n" +
+            "Ya ha alcanzado el número máximo de préstamos (3)."),
+    LOAN_NOTDONE2("Lo sentimos, este libro no cuenta con ningún ejemplar disponible por el momento."),
     RETURN_DONE("Devolución realizada con éxito."),
-    RETURN_NOTDONE("No se pudo realizar la devolución");
+    RETURN_NOTDONE1("No es posible realizar una devolución si no se tiene ningún libro que devolver."),
+    RETURN_NOTDONE2("El libro no coincide con ninguno de sus préstamos.");
+
 
     private String respuesta;
 

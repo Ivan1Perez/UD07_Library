@@ -22,16 +22,25 @@ public class Libro extends Publicacion{
         return titulo;
     }
 
-//    public String printListaEjemplares(){
-//        return "Libro '" + titulo + "'{\n\t" + listaEjemplares + "}";
-//    }
-
     public ListaSE<Ejemplar> getListaEjemplares(){
         return listaEjemplares;
     }
 
     public String getISBN() {
         return ISBN;
+    }
+
+    public int getEjemplaresDisponibles(){
+        int i = 0;
+        int total = 0;
+
+        while(i < listaEjemplares.getSize()){
+            if(listaEjemplares.get(i).isDisponible())
+                total++;
+            i++;
+        }
+
+        return total;
     }
 
     @Override
@@ -42,6 +51,6 @@ public class Libro extends Publicacion{
                 "\t\tPáginas: " + super.getPaginas() + "\n" +
                 "\t\tColor: " + super.getColor() + "\n" +
                 "\t\tISBN: " + ISBN + "\n" +
-                "\t\tEjemplares disponibles: " + ejemplaresInicial + "\n";
+                "\t\tEjemplares disponibles: " + getEjemplaresDisponibles() + "\n";
     }
 }

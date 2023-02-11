@@ -3,20 +3,24 @@ package model;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
-public class Prestamo {
+public class Prestamo<T> {
 
     private Date prestado;
     private Date devuelto;
-    private Socio socio;
+    private T tipo;
 
-    public Prestamo(Socio socio, Date prestado, Date devuelto) {
-        this.socio = socio;
-        this.prestado = prestado;
-        this.devuelto = devuelto;
+    public Prestamo(T tipo) {
+        this.tipo = tipo;
+        this.prestado = new Date();
+        this.devuelto = null;
     }
 
-    public Socio getSocio() {
-        return socio;
+    public T getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(T tipo) {
+        this.tipo = tipo;
     }
 
     public void setDevuelto(Date devuelto) {
@@ -34,14 +38,22 @@ public class Prestamo {
     @Override
     public String toString() {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String output = "";
 
-        if(devuelto==null)
-            return "\t" + socio.toStringPrestamos() + "\n" +
+        if (tipo instanceof Ejemplar) {
+            output = "\t\t[Título: " + ((Ejemplar) tipo).getTitulo() + "]\n" +
+                        tipo;
+        } else if (tipo instanceof Socio) {
+            output = tipo.toString();
+        }
+        if (devuelto == null) {
+            return output + "\n" +
                     "\t\t[Fecha de préstamo: " + formatter.format(prestado) + "]\n" +
                     "\t\t[Por devolver]\n";
-
-        return "\t" + socio.toStringPrestamos() + "\n" +
-                "\t\t[Fecha de préstamo: " + formatter.format(prestado) + "]\n" +
-                "\t\t[Fecha de devolución: " + formatter.format(devuelto) + "]\n";
+        } else {
+            return output + "\n" +
+                    "\t\t[Fecha de préstamo: " + formatter.format(prestado) + "]\n" +
+                    "\t\t[Fecha de devolución: " + formatter.format(devuelto) + "]\n";
+        }
     }
 }
