@@ -38,14 +38,14 @@ public class Entrada {
         while(!correcto){
             if(sc.hasNextInt()) {
                 opcion = sc.nextInt();
-                if(opcion > 0 && opcion < 11)
+                if(opcion > 0 && opcion < 10)
                     correcto = true;
                 else {
-                    System.out.println("Error. Has de introducir un número mayor que 0 y menor que 11");
+                    System.out.println("Error. Has de introducir un número mayor que 0 y menor que 10");
                     sc.nextLine();
                 }
             }else {
-                System.out.println("Error. Has de introducir un número mayor que 0 y menor que 11");
+                System.out.println("Error. Has de introducir un número mayor que 0 y menor que 10");
                 sc.nextLine();
             }
         }
