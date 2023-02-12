@@ -10,7 +10,11 @@ public class Main {
     public static void main(String[] args) {
         Entrada entrada = new Entrada();
         Biblioteca b1 = new Biblioteca();
+        int opcion;
+        boolean terminado;
         boolean salir = false;
+        String opcionesRegreso = "[1] Volver al menú principal → Pulse '1'\n" +
+                "[2] Salir → Pulse '2'";
 
         Libro l1 = new Libro("El Papel", 348, Color.BLANCOYNEGRO,
                 "Antonio Cabanas", "El camino de los dioses", "1122443399441"
@@ -45,7 +49,6 @@ public class Main {
         b1.addSocio(s1);
         b1.addSocio(s2);
 
-//        System.out.println(b1.getListaLibros());
 
         Menu m1 = new Menu(b1);
         System.out.println(m1.getMensajeInicio());
@@ -59,24 +62,21 @@ public class Main {
 
             switch (m1.getOpcionSelecionada()) {
                 case 1:
-                    for (String op : Opciones.opcionesRegreso())
-                        System.out.println(op);
+                    System.out.println(opcionesRegreso);
                     if(entrada.opciones1_2()==2)
                         salir = true;
                     break;
                 case 2:
                     System.out.println(m1.isPrestado());
                     System.out.println(b1.getConfirmacion());
-                    for (String op : Opciones.opcionesRegreso())
-                        System.out.println(op);
+                    System.out.println(opcionesRegreso);
                     if(entrada.opciones1_2()==2)
                         salir = true;
                     break;
                 case 3:
                     System.out.println(m1.isDevuelto());
                     System.out.println(b1.getConfirmacion());
-                    for (String op : Opciones.opcionesRegreso())
-                        System.out.println(op);
+                    System.out.println(opcionesRegreso);
                     if(entrada.opciones1_2()==2)
                         salir = true;
                     break;
@@ -96,26 +96,79 @@ public class Main {
                 switch (m1.getOpcionSelecionada()) {
                     case 1, 2, 3, 4:
                         System.out.println(m1.getListaSE());
-                        for (String op : Opciones.opcionesRegreso())
-                            System.out.println(op);
+                        System.out.println(opcionesRegreso);
                         if(entrada.opciones1_2()==2)
                             salir = true;
                         break;
 
                     case 5:
                         System.out.println(b1.getListaPrestamosLibro());
-                        for (String op : Opciones.opcionesRegreso())
-                            System.out.println(op);
+                        System.out.println(opcionesRegreso);
                         if(entrada.opciones1_2()==2)
                             salir = true;
                         break;
 
                     case 6:
                         System.out.println(b1.getListaPrestamosSocio());
-                        for (String op : Opciones.opcionesRegreso())
-                            System.out.println(op);
+                        System.out.println(opcionesRegreso);
                         if(entrada.opciones1_2()==2)
                             salir = true;
+                        break;
+
+                    case 7:
+                        System.out.println("[1] Dar de alta → Pulse '1'\n" +
+                                "[2] Dar de baja → Pulse '2'");
+                        if(entrada.opciones1_2()==1){
+                            if(b1.altaPublicacion())
+                                System.out.println("Alta correcta");
+                            else
+                                System.out.println("Este libro ya esta dado de alta.");
+                        }
+                        else{
+                            if(b1.bajaPublicacion())
+                                System.out.println("Baja correcta");
+                            else
+                                System.out.println("Este libro ya esta dado de baja.");
+                        }
+
+                        System.out.println(opcionesRegreso);
+                        if(entrada.opciones1_2()==2)
+                            salir = true;
+                        break;
+
+                    case 8:
+                        System.out.println("[1] Dar de alta → Pulse '1'\n" +
+                                "[2] Dar de baja → Pulse '2'\n" +
+                                "[3] Modificar → Pulse '3'");
+                        opcion = entrada.opciones1_2_3();
+                        if(opcion==1) {
+                            if (b1.altaSocio())
+                                System.out.println("Alta correcta");
+                            else
+                                System.out.println("El socio ya se encuentra dado de alta.");
+                        }
+                        else if (opcion==2){
+                            if (b1.bajaSocio())
+                                System.out.println("Baja correcta");
+                            else
+                                System.out.println("El socio ya se encuentra dado como dado de baja.");
+                        }
+                        else {
+                            do {
+                                System.out.println("[1] Modificar nombre → Pulse '1'\n" +
+                                        "[2] Modificar DNI → Pulse '2'\n");
+                                b1.modificarSocio();
+                                System.out.println("¿Ha terminado?");
+                                terminado = entrada.opcionSi_No();
+                            }while(!terminado);
+                        }
+
+                        System.out.println(opcionesRegreso);
+                        if(entrada.opciones1_2()==2)
+                            salir = true;
+                        break;
+
+                    default:
                         break;
 
                 }

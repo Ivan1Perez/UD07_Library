@@ -7,19 +7,35 @@ public class Socio{
     private ListaSE<Ejemplar> listaEjemplares;
     private ListaSE<Prestamo<Ejemplar>> listaPrestamos;
     private int numPrestamos;
+    private boolean alta;
 
-    public Socio() {
-    }
 
     public Socio(String nombre, String DNI) {
         this.nombre = nombre;
         this.DNI = DNI;
         listaEjemplares = new ListaSE<>();
         listaPrestamos = new ListaSE<>();
+        alta = true;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setDNI(String DNI) {
+        this.DNI = DNI;
     }
 
     public String getDNI() {
         return DNI;
+    }
+
+    public boolean isAlta() {
+        return alta;
+    }
+
+    public void setAlta(boolean alta) {
+        this.alta = alta;
     }
 
     public ListaSE<Prestamo<Ejemplar>> getListaPrestamos() {

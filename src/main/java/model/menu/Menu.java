@@ -30,7 +30,7 @@ public class Menu {
         switch (entrada.checkOpcionesPrincipales()){
             case 1:
                 opcionSelecionada = 1;
-                this.libro = biblioteca.checkLibro();
+                biblioteca.checkLibro();
                 break;
             case 2:
                 opcionSelecionada = 2;
@@ -73,6 +73,15 @@ public class Menu {
                 break;
             case 6:
                 opcionSelecionada = 6;
+                break;
+            case 7:
+                opcionSelecionada = 7;
+                break;
+            case 8:
+                opcionSelecionada = 8;
+                break;
+            default:
+                opcionSelecionada = 9;
                 break;
         }
     }

@@ -1,12 +1,13 @@
 package model;
 
-public class Libro extends Publicacion{
+public class Libro extends Publicacion<Libro>{
 
     private String autor;
     private String titulo;
     private int ejemplaresInicial;
     private String ISBN;
     protected ListaSE<Ejemplar> listaEjemplares = new ListaSE<>();
+    private Object tipo;
 
     public Libro(String editorial, int paginas, Color color, String autor, String titulo, String ISBN, int ejemplaresInicial) {
         super(editorial, paginas, color);
@@ -41,6 +42,10 @@ public class Libro extends Publicacion{
         }
 
         return total;
+    }
+
+    public Object getTipo() {
+        return this;
     }
 
     @Override

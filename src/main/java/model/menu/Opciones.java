@@ -30,13 +30,6 @@ public class Opciones {
         };
     }
 
-    public static String[] opcionesRegreso() {
-        return new String[]{
-                ("[1] Volver al menú principal → Pulse '1'"),
-                ("[2] Salir → Pulse '2'")
-        };
-    }
-
 //    @Override
 //    public String toString() {
 //        return "¿Qué desea hacer en la biblioteca?\n" +

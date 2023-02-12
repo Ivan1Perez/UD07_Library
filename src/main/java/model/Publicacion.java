@@ -1,19 +1,17 @@
 package model;
 
-public abstract class Publicacion {
+public abstract class Publicacion<T> {
 
     private String editorial;
     private int paginas;
     private Color color;
     private boolean alta;
 
-    public Publicacion() {
-    }
-
     public Publicacion(String editorial, int paginas, Color color) {
         this.editorial = editorial;
         this.paginas = paginas;
         this.color = color;
+        alta = true;
     }
 
     public String getEditorial() {
@@ -35,4 +33,5 @@ public abstract class Publicacion {
     public void setAlta(boolean alta) {
         this.alta = alta;
     }
+
 }

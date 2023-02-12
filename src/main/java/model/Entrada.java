@@ -104,6 +104,30 @@ public class Entrada {
         return respuesta;
     }
 
+    public int opciones1_2_3(){
+        Scanner sc = new Scanner(System.in);
+        int respuesta = 0;
+        boolean correcto = false;
+
+        while(!correcto){
+            if(sc.hasNextInt()) {
+                respuesta = sc.nextInt();
+                if(respuesta > 0 && respuesta < 4)
+                    correcto = true;
+                else {
+                    System.out.println("Error. Has de introducir un '1',un '2' o un '3'.");
+                    sc.nextLine();
+                }
+            }else {
+                System.out.println("Error. Has de introducir un '1', un '2' o un '3'.");
+                sc.nextLine();
+            }
+        }
+
+
+        return respuesta;
+    }
+
     public Socio crearSocio(ListaSE<Socio> listaSocios){
         String nombre = nombre(), DNI;
         int i = 0;
@@ -120,18 +144,23 @@ public class Entrada {
         }while(i < listaSocios.getSize());
 
         System.out.println("Socio creado!");
-        System.out.println("Vuelva a introducir su DNI para realizar el préstamo/devolución.");
+        System.out.println("Vuelva a introducir su DNI para completar el trámite.");
 
         return new Socio(nombre, DNI);
     }
 
-    public boolean libroBuscado(Libro libro){
+    public <T> boolean busquedaPublicacion(T publicacion){
         Scanner sc = new Scanner(System.in);
-        String respuesta;
+        String respuesta, tipo;
         boolean respCorrecta = false;
 
-        System.out.println("¿Es este el libro que buscabas?\n" +
-                libro);
+        if(publicacion instanceof Libro)
+            tipo = "e el libro";
+        else
+            tipo = "a la publicación";
+
+        System.out.println("¿Es est" + tipo + "que buscabas?\n" +
+                publicacion);
         System.out.println("Sí → Pulsa [S]");
         System.out.println("No → Pulsa [N]");
 
@@ -168,27 +197,7 @@ public class Entrada {
     }
 
     public void tituloNoCoincide(){
-        Scanner sc = new Scanner(System.in);
-        int respuesta;
-        boolean correcto = false;
-
         System.out.println(Confirmacion.TITLE_NOTFOUND.getRespuesta());
-
-        while(!correcto){
-            if(sc.hasNextInt()) {
-                respuesta = sc.nextInt();
-                if(respuesta > 0 && respuesta < 3) {
-                    correcto = true;
-                }
-                else {
-                    System.out.println("Error. Has de introducir un '1' o un '2'");
-                    sc.nextLine();
-                }
-            }else {
-                System.out.println("Error. Has de introducir un '1' o un '2'");
-                sc.nextLine();
-            }
-        }
     }
 
     public int DNI_NoEncontrado() {
@@ -233,6 +242,57 @@ public class Entrada {
         }
 
         return num;
+    }
+
+    public String tituloPublicacion(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Introduzca el nombre o título de la publicación:");
+
+        return sc.nextLine();
+    }
+
+    public boolean opcionSi_No(){
+        Scanner sc = new Scanner(System.in);
+        String respuesta;
+        boolean respCorrecta = false;
+
+        System.out.println("Sí → Pulsa [S]");
+        System.out.println("No → Pulsa [N]");
+
+        do{
+            respuesta = sc.nextLine();
+            if(respuesta.equalsIgnoreCase("N") || respuesta.equalsIgnoreCase("S")){
+                respCorrecta = true;
+            }
+            else
+                System.out.println("Error. Debes introducir [S] o [N]");
+        }while(!respCorrecta);
+
+        if(respuesta.equalsIgnoreCase("S"))
+            return true;
+
+        return false;
+    }
+
+    public String checkNewDNI(ListaSE<Socio> listaSocios){
+        String DNI;
+        int i = 0;
+
+        System.out.println("A continuación ingrese el DNI a modificar.");
+        DNI = DNI();
+
+        do{
+            if (DNI.equalsIgnoreCase(listaSocios.get(i).getDNI())) {
+                System.out.println("Error, ya existe un socio con este DNI. Prueba de nuevo");
+                DNI = DNI();
+                i = -1;
+            }
+            i++;
+        }while(i < listaSocios.getSize());
+
+        System.out.println("DNI actualizado.");
+
+        return DNI;
     }
 
 }

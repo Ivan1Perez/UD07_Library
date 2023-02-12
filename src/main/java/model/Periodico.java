@@ -16,6 +16,10 @@ public class Periodico extends Publicacion{
         this.fechaPublicacion = fechaPublicacion;
     }
 
+    public String getTitulo(){
+        return nombre;
+    }
+
     @Override
     public String toString() {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");

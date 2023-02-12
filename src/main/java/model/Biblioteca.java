@@ -94,7 +94,8 @@ public class Biblioteca<T> {
             i = 0;
             titulo = entrada.titulo();
             while (i < listaLibros.getSize() && !encontrado) {
-                if (listaLibros.get(i).getTitulo().toLowerCase().contains(titulo.toLowerCase())) {
+                if (listaLibros.get(i).getTitulo().toLowerCase().contains(titulo.toLowerCase()) &&
+                        listaLibros.get(i).isAlta()) {
                     encontrado = true;
                     l = listaLibros.get(i);
                 }
@@ -136,13 +137,12 @@ public class Biblioteca<T> {
         boolean libroCorrecto = false;
         Libro l;
 
-        do {
+        do{
             l = buscarLibro();
-            if(l==null)
-                entrada.tituloNoCoincide();
-            else if (entrada.libroBuscado(l))
+            if(entrada.busquedaPublicacion(l))
                 libroCorrecto = true;
-        } while (!libroCorrecto);
+        }while(!libroCorrecto);
+
 
         return l;
     }
@@ -223,7 +223,6 @@ public class Biblioteca<T> {
                 }
                 i++;
             }
-
         }
 
         i = 0;
@@ -245,6 +244,112 @@ public class Biblioteca<T> {
         }
 
         return confirmado;
+    }
+
+    public boolean altaPublicacion(){
+        boolean altaCorrecta = false;
+
+        Publicacion p = buscarPublicacion();
+
+        if(!p.isAlta()){
+            altaCorrecta = true;
+            p.setAlta(true);
+        }
+
+
+        return altaCorrecta;
+    }
+
+    public boolean bajaPublicacion(){
+        boolean bajaCorrecta = false;
+
+        Publicacion p = buscarPublicacion();
+
+        if(p.isAlta()){
+            bajaCorrecta = true;
+            p.setAlta(false);
+        }
+
+        return bajaCorrecta;
+    }
+
+    public Publicacion buscarPublicacion(){
+        int i;
+        boolean encontrado = false;
+        String titulo;
+        Publicacion p = null;
+        ListaSE listaPublicaciones = listaLibros;
+        listaPublicaciones.addAll(listaRevistas);
+        listaPublicaciones.addAll(listaPeriodicos);
+
+
+        do {
+            i = 0;
+            titulo = entrada.tituloPublicacion();
+            while (i < listaPublicaciones.getSize() && !encontrado) {
+                if (listaPublicaciones.get(i).toString().toLowerCase().contains(titulo.toLowerCase())) {
+                    Object obj = listaPublicaciones.get(i);
+                    if(obj instanceof Libro)
+                        p = (Libro) obj;
+                    else if(obj instanceof Revista)
+                        p = (Revista) obj;
+                    else
+                        p = (Periodico) obj;
+
+                    if(entrada.busquedaPublicacion(p))
+                        encontrado = true;
+
+                }
+                i++;
+            }
+
+            if (!encontrado)
+                entrada.tituloNoCoincide();
+        }while(!encontrado);
+
+        return p;
+    }
+
+    public boolean altaSocio(){
+        boolean altaCorrecta = false;
+
+        Socio s = checkSocio();
+
+        if(!s.isAlta()){
+            altaCorrecta = true;
+            s.setAlta(true);
+        }
+
+
+        return altaCorrecta;
+    }
+
+    public boolean bajaSocio(){
+        boolean bajaCorrecta = false;
+
+        Socio s = checkSocio();
+
+        if(s.isAlta()){
+            bajaCorrecta = true;
+            s.setAlta(false);
+        }
+
+        return bajaCorrecta;
+    }
+
+    public void modificarSocio(){
+        Socio s;
+        int opcion = entrada.opciones1_2();
+
+        if(opcion==1) {
+            s = checkSocio();
+            s.setNombre(entrada.nombre());
+        }
+        else{
+            s = checkSocio();
+            s.setDNI(entrada.checkNewDNI(listaSocios));
+        }
+
     }
 
     @Override
