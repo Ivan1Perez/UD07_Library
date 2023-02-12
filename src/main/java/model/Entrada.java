@@ -278,7 +278,7 @@ public class Entrada {
         String DNI;
         int i = 0;
 
-        System.out.println("A continuación ingrese el DNI a modificar.");
+        System.out.println("A continuación ingrese el nuevo DNI.");
         DNI = DNI();
 
         do{
